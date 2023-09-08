@@ -13,36 +13,42 @@ struct HandView: View {
     let type: HandType
     let time: Clock
     
+    @State private var clockSize: CGSize = .zero
+    
     var body: some View {
         GeometryReader { proxy in
             RoundedRectangle(cornerRadius: 4)
                 .fill(self.type.gradient)
-                .frame(width: self.type.thickness, height: totalLength(proxy))
-                .position(startingPoint(proxy))
+                .frame(width: self.type.thickness, height: totalLength())
+                .position(startingPoint())
                 .rotationEffect(self.type.rotationAngle(for: self.time))
+                .onAppear { self.clockSize = proxy.size }
+//                .overlay(
+//                    Circle().frame(width: 20).position(x: proxy.size.width / 2, y: proxy.size.height / 2)
+//                )
         }
     }
     
     /// Starting point for the hand. Center of the clock offset by amount to overlap.
-    private func startingPoint(_ proxy: GeometryProxy) -> CGPoint {
-        let center = CGPoint(x: proxy.size.width / 2, y: (proxy.size.height / 2))
-        return CGPoint(x: center.x, y: center.y - overlapAmount(proxy.size))
+    private func startingPoint() -> CGPoint {
+        let center = CGPoint(x: clockSize.width / 2, y: clockSize.height / 2)
+        return CGPoint(x: center.x, y: center.y - overlapAmount())
     }
-    
+
     /// Length of hand with added amount for overlap.
-    private func totalLength(_ proxy: GeometryProxy) -> CGFloat {
-        let fromCenter = lengthFromCenter(proxy.size)
-        let overlapAmount = overlapAmount(proxy.size)
+    private func totalLength() -> CGFloat {
+        let fromCenter = lengthFromCenter()
+        let overlapAmount = overlapAmount()
         return fromCenter + overlapAmount
     }
     
-    private func overlapAmount(_ size: CGSize) -> CGFloat {
-        lengthFromCenter(size) / 4
+    private func overlapAmount() -> CGFloat {
+        lengthFromCenter() / 4
     }
     
     /// Length of hand from center of the clock.
-    private func lengthFromCenter(_ size: CGSize) -> CGFloat {
-        let radius = min(size.width, size.height) / 2
+    private func lengthFromCenter() -> CGFloat {
+        let radius = min(clockSize.width, clockSize.height) / 2
         return self.type.lengthMultiplier * radius
     }
 }
