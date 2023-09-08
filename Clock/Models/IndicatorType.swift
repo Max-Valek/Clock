@@ -14,8 +14,8 @@ enum IndicatorType {
         
         var color: Color {
             switch self {
-            case .hour: return .secondary
-            case .minute: return .secondary
+            case .hour: return .primary
+            case .minute: return .primary
             case .second: return .secondary
             }
         }
@@ -46,9 +46,9 @@ enum IndicatorType {
         
         func baseRadiusFactor(for time: Clock) -> CGFloat {
             switch self {
-            case .hour: return 0.05
-            case .minute: return 0.05
-            case .second: return 0.05
+            case .hour: return 0.04
+            case .minute: return 0.04
+            case .second: return 0.04
             }
         }
     }
