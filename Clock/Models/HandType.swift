@@ -24,7 +24,7 @@ enum HandType {
         switch self {
         case .hour: return Metallic.gold.linearGradient
         case .minute: return Metallic.gold.linearGradient
-        case .second: return Metallic.gold.linearGradient
+        case .second: return Metallic.silver.linearGradient
         }
     }
     

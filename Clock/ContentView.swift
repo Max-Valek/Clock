@@ -24,10 +24,10 @@ struct ContentView: View {
                 .fill(Metallic.silver.linearGradient.opacity(0.3))
                 .background(.black)
                 .blur(radius: 1)
-                .overlay(
-                    Circle()
-                        .stroke(Metallic.gold.linearGradient, lineWidth: 3)
-                )
+//                .overlay(
+//                    Circle()
+//                        .stroke(Metallic.silver.linearGradient, lineWidth: 3)
+//                )
                 .frame(maxWidth: 350)
                 .clipShape(Circle())
                 .shadow(color: .black, radius: 4, x: 4, y: 4)
