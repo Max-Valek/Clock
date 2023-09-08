@@ -7,7 +7,9 @@
 
 import Foundation
 
+/// Represents the current time for the clock.
 struct Clock {
+    
     let hours: Int
     let minutes: Int
     let seconds: Int

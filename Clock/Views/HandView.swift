@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// View representing a hand on the clock, rotated based on time.
 struct HandView: View {
     
     let type: HandType
@@ -14,54 +15,35 @@ struct HandView: View {
     
     var body: some View {
         GeometryReader { proxy in
-            Path { path in
-                let start = self.startingPoint(proxy)
-                path.move(to: start)
-                /// draw upwards, rotated later.
-                path.addLine(to: CGPoint(
-                    x: start.x,
-                    y: start.y - totalLength(proxy))
-                )
-            }
-            .stroke(style: StrokeStyle(
-                lineWidth: self.type.thickness,
-                lineCap: .round)
-            )
-            .fill(self.type.gradient)
-            //.shadow(color: .black.opacity(0.7), radius: 1, x: 1, y: 1)
-            /// Rotate indicator based on time.
-            .rotationEffect(self.type.rotationAngle(for: self.time))
+            RoundedRectangle(cornerRadius: 4)
+                .fill(self.type.gradient)
+                .frame(width: self.type.thickness, height: totalLength(proxy))
+                .position(startingPoint(proxy))
+                .rotationEffect(self.type.rotationAngle(for: self.time))
         }
     }
-    /// Calculate and return the center point of the clock.
+    
+    /// Starting point for the hand. Center of the clock offset by amount to overlap.
     private func startingPoint(_ proxy: GeometryProxy) -> CGPoint {
-        /// center of the clock
         let center = CGPoint(x: proxy.size.width / 2, y: (proxy.size.height / 2))
-        /// length from center to end of hand
-        let size = self.type.lengthMultiplier * self.clockRadius(for: proxy.size)
-        /// overlap a little in the middle
-        let overlapAmount = size / 4
-        return CGPoint(x: center.x, y: center.y + overlapAmount)
+        return CGPoint(x: center.x, y: center.y - overlapAmount(proxy.size))
     }
     
+    /// Length of hand with added amount for overlap.
     private func totalLength(_ proxy: GeometryProxy) -> CGFloat {
-        let fromCenter = self.type.lengthMultiplier * self.clockRadius(for: proxy.size)
-        let overlapAmount = fromCenter / 4
+        let fromCenter = lengthFromCenter(proxy.size)
+        let overlapAmount = overlapAmount(proxy.size)
         return fromCenter + overlapAmount
     }
-
-    /// Calculate and return the indicator's length.
-//    private func indicatorLength(_ proxy: GeometryProxy) -> CGFloat {
-//        self.type.relativeLength * self.clockRadius(for: proxy.size)
-//    }
     
-//    private func overlapAmount(_ proxy: GeometryProxy) -> CGFloat {
-//        indicatorLength(proxy) / 4
-//    }
+    private func overlapAmount(_ size: CGSize) -> CGFloat {
+        lengthFromCenter(size) / 4
+    }
     
-    /// Calculate and return the radius of the clock.
-    private func clockRadius(for size: CGSize) -> CGFloat {
-        min(size.width, size.height) / 2
+    /// Length of hand from center of the clock.
+    private func lengthFromCenter(_ size: CGSize) -> CGFloat {
+        let radius = min(size.width, size.height) / 2
+        return self.type.lengthMultiplier * radius
     }
 }
 

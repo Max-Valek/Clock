@@ -8,6 +8,7 @@
 import SwiftUI
 import Combine
 
+/// View for a basic clock with hours, minutes, and seconds hands along with a marker for each hour.
 struct ClockView: View {
     
     @State(initialValue: Clock(date: Date()))
@@ -17,7 +18,7 @@ struct ClockView: View {
     
     var body: some View {
         ZStack {
-            HourMarksView()
+            HourIndicatorsViewView()
             HandView(type: .hour, time: time)
             HandView(type: .minute, time: time)
             HandView(type: .second, time: time)
@@ -28,6 +29,7 @@ struct ClockView: View {
         .onDisappear { self.unsubscribe() }
     }
     
+    /// Subscribe to timer to get its updates.
     private func subscribe() {
         timerSubscription = Timer.publish(every: 1, on: .main, in: .common)
             .autoconnect()
@@ -35,6 +37,7 @@ struct ClockView: View {
             .assign(to: \.time, on: self)
     }
     
+    /// Unsubscribe from timer.
     private func unsubscribe() {
         timerSubscription?.cancel()
     }

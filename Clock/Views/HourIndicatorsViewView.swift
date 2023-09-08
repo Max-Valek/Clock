@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HourMarksView: View {
+struct HourIndicatorsViewView: View {
     
     private let lengthMultiplier: CGFloat = 0.05
     
@@ -21,7 +21,6 @@ struct HourMarksView: View {
                         y: self.lengthMultiplier * proxy.size.height)
                     )
                 }
-                //.fill(Metallic.silver.linearGradient)
                 .stroke(Metallic.silver.linearGradient, lineWidth: 1)
                 .rotationEffect(Angle(degrees: Double(i) * 360 / 12))
             }

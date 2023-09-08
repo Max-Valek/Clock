@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-// Represents each hand on the clock.
+/// Represents each hand on the clock.
 enum HandType {
     
     case hour, minute, second
@@ -17,16 +17,16 @@ enum HandType {
         switch self {
         case .hour: return Metallic.silver.linearGradient
         case .minute: return Metallic.silver.linearGradient
-        case .second: return LinearGradient(colors: [.red], startPoint: .topLeading, endPoint: .bottomTrailing)
+        case .second: return LinearGradient(colors: [.indigo], startPoint: .topLeading, endPoint: .bottomTrailing)
         }
     }
 
     /// Thickness of the different hands.
     var thickness: CGFloat {
         switch self {
-        case .hour: return 6
-        case .second: return 2
-        case .minute: return 4
+        case .hour: return 7
+        case .second: return 3
+        case .minute: return 5
         }
     }
     
@@ -34,8 +34,8 @@ enum HandType {
     var lengthMultiplier: CGFloat {
         switch self {
         case .hour: return 0.65
-        case .minute: return 0.75
-        case .second: return 0.75
+        case .minute: return 0.85
+        case .second: return 0.9
         }
     }
     
