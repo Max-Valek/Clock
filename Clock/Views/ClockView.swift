@@ -17,10 +17,10 @@ struct ClockView: View {
     
     var body: some View {
         ZStack {
-            ClockMarks()
-            ClockIndicator(type: .hour, time: time)
-            ClockIndicator(type: .minute, time: time)
-            ClockIndicator(type: .second, time: time)
+            HourMarksView()
+            HandView(type: .second, time: time)
+            HandView(type: .hour, time: time)
+            HandView(type: .minute, time: time)
         }
         .padding()
         .aspectRatio(1, contentMode: .fit)
