@@ -12,6 +12,10 @@
 		9D565E932AAB7EA10004F40F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D565E922AAB7EA10004F40F /* Assets.xcassets */; };
 		9D565E962AAB7EA10004F40F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D565E952AAB7EA10004F40F /* Preview Assets.xcassets */; };
 		9D565E9F2AAB7FB90004F40F /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D565E9E2AAB7FB90004F40F /* Clock.swift */; };
+		9D565EA12AAB80B10004F40F /* ClockMarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D565EA02AAB80B10004F40F /* ClockMarks.swift */; };
+		9D565EA32AAB824B0004F40F /* IndicatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D565EA22AAB824B0004F40F /* IndicatorType.swift */; };
+		9D565EA52AAB82AC0004F40F /* ClockIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D565EA42AAB82AC0004F40F /* ClockIndicator.swift */; };
+		9D565EA72AAB84D50004F40F /* ClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D565EA62AAB84D50004F40F /* ClockView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +25,10 @@
 		9D565E922AAB7EA10004F40F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9D565E952AAB7EA10004F40F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9D565E9E2AAB7FB90004F40F /* Clock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clock.swift; sourceTree = "<group>"; };
+		9D565EA02AAB80B10004F40F /* ClockMarks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockMarks.swift; sourceTree = "<group>"; };
+		9D565EA22AAB824B0004F40F /* IndicatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorType.swift; sourceTree = "<group>"; };
+		9D565EA42AAB82AC0004F40F /* ClockIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockIndicator.swift; sourceTree = "<group>"; };
+		9D565EA62AAB84D50004F40F /* ClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				9D565E9E2AAB7FB90004F40F /* Clock.swift */,
+				9D565EA22AAB824B0004F40F /* IndicatorType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -82,6 +91,9 @@
 		9D565E9D2AAB7F830004F40F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9D565EA02AAB80B10004F40F /* ClockMarks.swift */,
+				9D565EA42AAB82AC0004F40F /* ClockIndicator.swift */,
+				9D565EA62AAB84D50004F40F /* ClockView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -157,7 +169,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D565E9F2AAB7FB90004F40F /* Clock.swift in Sources */,
+				9D565EA32AAB824B0004F40F /* IndicatorType.swift in Sources */,
+				9D565EA12AAB80B10004F40F /* ClockMarks.swift in Sources */,
 				9D565E912AAB7EA00004F40F /* ContentView.swift in Sources */,
+				9D565EA72AAB84D50004F40F /* ClockView.swift in Sources */,
+				9D565EA52AAB82AC0004F40F /* ClockIndicator.swift in Sources */,
 				9D565E8F2AAB7EA00004F40F /* ClockApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

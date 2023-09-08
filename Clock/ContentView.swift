@@ -11,8 +11,10 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             Circle()
-                .fill(.ultraThinMaterial)
-                .background(Circle().stroke(.red, lineWidth: 5))
+                .fill(.clear)
+                .frame(maxWidth: 350)
+            
+            ClockView()
                 .frame(maxWidth: 350)
         }
         .frame(maxWidth: .infinity)
