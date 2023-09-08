@@ -32,7 +32,7 @@ struct HourIndicatorsViewView: View {
         }
     }
     
-    func highlighted(_ hour: Int) -> Bool {
+    private func highlighted(_ hour: Int) -> Bool {
         let status = markSeconds(hour) || markMinutes(hour) || markHours(hour)
         if self.isHighlighted != status {
             withAnimation {
@@ -42,29 +42,29 @@ struct HourIndicatorsViewView: View {
         return status
     }
     
-    func indicatorStyle(for hour: Int) -> LinearGradient {
+    private func indicatorStyle(for hour: Int) -> LinearGradient {
         return LinearGradient(
             colors: [indicatorColor(for: hour)],
             startPoint: .topLeading, endPoint: .bottomTrailing
         )
     }
     
-    func indicatorColor(for hour: Int) -> Color {
+    private func indicatorColor(for hour: Int) -> Color {
         if markSeconds(hour) { return HandType.second.color }
         if markHours(hour) { return HandType.hour.color }
         if markMinutes(hour) { return HandType.minute.color }
         return .gray
     }
     
-    func markSeconds(_ hour: Int) -> Bool {
+    private func markSeconds(_ hour: Int) -> Bool {
         time.seconds % 5 == 0 && time.seconds / 5 == hour
     }
     
-    func markMinutes(_ hour: Int) -> Bool {
+    private func markMinutes(_ hour: Int) -> Bool {
         time.minutes / 5 >= hour && time.minutes / 5 < hour + 1
     }
     
-    func markHours(_ hour: Int) -> Bool {
+    private func markHours(_ hour: Int) -> Bool {
         time.hours >= hour && time.hours < hour + 1
     }
 }

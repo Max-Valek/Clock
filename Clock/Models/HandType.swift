@@ -15,7 +15,7 @@ enum HandType {
     var color: Color {
         switch self {
         case .hour: return .primary
-        case .minute: return .primary
+        case .minute: return .secondary
         case .second: return .red
         }
     }
@@ -23,9 +23,9 @@ enum HandType {
     /// Thickness of the different hands.
     var thickness: CGFloat {
         switch self {
-        case .hour: return 6
-        case .second: return 1
-        case .minute: return 3
+        case .hour: return 10
+        case .second: return 2
+        case .minute: return 5
         }
     }
     
@@ -33,8 +33,8 @@ enum HandType {
     var lengthMultiplier: CGFloat {
         switch self {
         case .hour: return 0.6
-        case .minute: return 0.85
-        case .second: return 0.85
+        case .minute: return 0.8
+        case .second: return 0.8
         }
     }
     
