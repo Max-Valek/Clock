@@ -12,33 +12,25 @@ enum HandType {
     case minute
     case second
     
-    //        var color: Color {
-    //            switch self {
-    //            case .hour: return .primary
-    //            case .minute: return .primary
-    //            case .second: return .secondary
-    //            }
-    //        }
-    
-    var color: LinearGradient {
+    var gradient: LinearGradient {
         switch self {
-        case .hour: return Metallic.gold.linearGradient
-        case .minute: return Metallic.gold.linearGradient
-        case .second: return Metallic.silver.linearGradient
+        case .hour: return Metallic.silver.linearGradient
+        case .minute: return Metallic.silver.linearGradient
+        case .second: return LinearGradient(colors: [.red], startPoint: .topLeading, endPoint: .bottomTrailing)
         }
     }
-    
+
     var thickness: CGFloat {
         switch self {
-        case .hour: return 4
-        case .second: return 1
-        case .minute: return 2
+        case .hour: return 6
+        case .second: return 2
+        case .minute: return 4
         }
     }
     
     var relativeLength: CGFloat {
         switch self {
-        case .hour: return 0.55
+        case .hour: return 0.65
         case .minute: return 0.8
         case .second: return 0.85
         }

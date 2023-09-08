@@ -16,9 +16,13 @@ struct HourMarksView: View {
             ForEach(0..<12) { i in
                 Path { path in
                     path.move(to: CGPoint(x: proxy.size.width / 2, y: 0))
-                    path.addLine(to: CGPoint(x: proxy.size.width / 2, y: self.relativeLength * proxy.size.height))
+                    path.addLine(to: CGPoint(
+                        x: proxy.size.width / 2,
+                        y: self.relativeLength * proxy.size.height
+                    )
+                    )
                 }
-                .stroke(Metallic.gold.linearGradient, lineWidth: 2)
+                .stroke(.red, lineWidth: 1)
                 .rotationEffect(Angle(degrees: Double(i) * 360 / 12))
             }
         }
