@@ -24,18 +24,18 @@ enum HandType {
     /// Thickness of the different hands.
     var thickness: CGFloat {
         switch self {
-        case .hour: return 7
+        case .hour: return 8
         case .second: return 3
-        case .minute: return 5
+        case .minute: return 6
         }
     }
     
     /// Percentage of the clock radius the hand will span (from center of clock to end).
     var lengthMultiplier: CGFloat {
         switch self {
-        case .hour: return 0.65
-        case .minute: return 0.85
-        case .second: return 0.9
+        case .hour: return 0.6
+        case .minute: return 0.75
+        case .second: return 0.85
         }
     }
     

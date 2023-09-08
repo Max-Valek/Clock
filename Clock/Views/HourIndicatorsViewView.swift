@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// Draws a line indicator for each hour around the clock.
 struct HourIndicatorsViewView: View {
     
     private let lengthMultiplier: CGFloat = 0.05
@@ -21,7 +22,7 @@ struct HourIndicatorsViewView: View {
                         y: self.lengthMultiplier * proxy.size.height)
                     )
                 }
-                .stroke(Metallic.silver.linearGradient, lineWidth: 1)
+                .stroke(Metallic.silver.linearGradient, lineWidth: 2)
                 .rotationEffect(Angle(degrees: Double(i) * 360 / 12))
             }
         }
