@@ -23,15 +23,11 @@ struct ContentView: View {
             Circle()
                 .fill(Metallic.silver.linearGradient.opacity(0.3))
                 .background(.black)
-                .blur(radius: 1)
-//                .overlay(
-//                    Circle()
-//                        .stroke(Metallic.silver.linearGradient, lineWidth: 3)
-//                )
+                .blur(radius: 4)
                 .frame(maxWidth: 350)
                 .clipShape(Circle())
                 .shadow(color: .black, radius: 4, x: 4, y: 4)
-                .shadow(color: .secondary.opacity(0.3), radius: 2, x: -2, y: -2)
+                .shadow(color: .secondary.opacity(0.5), radius: 2, x: -2, y: -2)
             
             ClockView()
                 .frame(maxWidth: 350)
