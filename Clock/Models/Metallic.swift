@@ -7,11 +7,11 @@
 
 import SwiftUI
 
+// Metallic gradients
 enum Metallic {
-    case gold
-    case silver
-    case platinum
-    case bronze
+    
+    case gold, silver, platinum, bronze
+    
     var colors: [Color] {
         switch self {
         case .gold: return [
@@ -36,8 +36,7 @@ enum Metallic {
         
     }
     
-    var linearGradient: LinearGradient
-    {
+    var linearGradient: LinearGradient {
         return LinearGradient(
             gradient: Gradient(colors: self.colors),
             startPoint: .topLeading,

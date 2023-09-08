@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HourMarksView: View {
     
-    private let relativeLength: CGFloat = 0.05
+    private let lengthMultiplier: CGFloat = 0.05
     
     var body: some View {
         GeometryReader { proxy in
@@ -18,11 +18,11 @@ struct HourMarksView: View {
                     path.move(to: CGPoint(x: proxy.size.width / 2, y: 0))
                     path.addLine(to: CGPoint(
                         x: proxy.size.width / 2,
-                        y: self.relativeLength * proxy.size.height
-                    )
+                        y: self.lengthMultiplier * proxy.size.height)
                     )
                 }
-                .stroke(.red, lineWidth: 1)
+                //.fill(Metallic.silver.linearGradient)
+                .stroke(Metallic.silver.linearGradient, lineWidth: 1)
                 .rotationEffect(Angle(degrees: Double(i) * 360 / 12))
             }
         }

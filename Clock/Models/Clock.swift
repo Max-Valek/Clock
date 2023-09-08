@@ -13,11 +13,9 @@ struct Clock {
     let seconds: Int
     
     init(date: Date) {
-        let now = Date()
-        let calendar = Calendar.current
-        let hours = calendar.component(.hour, from: now)
-        self.hours = hours <= 12 ? hours : hours - 12
-        minutes = calendar.component(.minute, from: now)
-        seconds = calendar.component(.second, from: now)
+        let hoursIn24 = Calendar.current.component(.hour, from: .now)
+        hours = hoursIn24 <= 12 ? hoursIn24 : hoursIn24 - 12
+        minutes = Calendar.current.component(.minute, from: .now)
+        seconds = Calendar.current.component(.second, from: .now)
     }
 }

@@ -30,7 +30,7 @@ struct HandView: View {
             .fill(self.type.gradient)
             //.shadow(color: .black.opacity(0.7), radius: 1, x: 1, y: 1)
             /// Rotate indicator based on time.
-            .rotationEffect(self.type.angle(for: self.time))
+            .rotationEffect(self.type.rotationAngle(for: self.time))
         }
     }
     /// Calculate and return the center point of the clock.
@@ -38,14 +38,14 @@ struct HandView: View {
         /// center of the clock
         let center = CGPoint(x: proxy.size.width / 2, y: (proxy.size.height / 2))
         /// length from center to end of hand
-        let size = self.type.relativeLength * self.clockRadius(for: proxy.size)
+        let size = self.type.lengthMultiplier * self.clockRadius(for: proxy.size)
         /// overlap a little in the middle
         let overlapAmount = size / 4
         return CGPoint(x: center.x, y: center.y + overlapAmount)
     }
     
     private func totalLength(_ proxy: GeometryProxy) -> CGFloat {
-        let fromCenter = self.type.relativeLength * self.clockRadius(for: proxy.size)
+        let fromCenter = self.type.lengthMultiplier * self.clockRadius(for: proxy.size)
         let overlapAmount = fromCenter / 4
         return fromCenter + overlapAmount
     }
