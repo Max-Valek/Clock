@@ -10,7 +10,7 @@ import SwiftUI
 /// View representing a hand on the clock, rotated based on time.
 struct HandView: View {
     
-    let type: HandType
+    let hand: HandType
     let time: Clock
     
     /// Percentage of the hand length to add as overlap.
@@ -21,11 +21,10 @@ struct HandView: View {
     var body: some View {
         GeometryReader { proxy in
             Capsule()
-                .fill(self.type.gradient)
-                .overlay(Capsule().stroke(.black.opacity(0.5), lineWidth: self.type.thickness / 10))
-                .frame(width: self.type.thickness, height: totalLength())
+                .fill(self.hand.color)
+                .frame(width: self.hand.thickness, height: totalLength())
                 .position(startingPoint())
-                .rotationEffect(self.type.rotationAngle(for: self.time))
+                .rotationEffect(self.hand.rotationAngle(for: self.time))
                 .onAppear { self.size = proxy.size }
         }
     }
@@ -51,12 +50,12 @@ struct HandView: View {
     /// Length of hand from center of the clock.
     private func lengthFromCenter() -> CGFloat {
         let radius = min(size.width, size.height) / 2
-        return self.type.lengthMultiplier * radius
+        return self.hand.lengthMultiplier * radius
     }
 }
 
 struct HandView_Previews: PreviewProvider {
     static var previews: some View {
-        HandView(type: .hour, time: .init(date: .now))
+        HandView(hand: .hour, time: .init(date: .now))
     }
 }
