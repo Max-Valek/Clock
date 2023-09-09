@@ -16,7 +16,7 @@ struct ClockView: View {
     var body: some View {
         ZStack {
             HourMarksView(clock: clockManager)
-            ForEach(HandType.allCases, id: \.self) { hand in
+            ForEach(ClockHand.allCases, id: \.self) { hand in
                 HandView(type: hand, clock: clockManager)
             }
         }

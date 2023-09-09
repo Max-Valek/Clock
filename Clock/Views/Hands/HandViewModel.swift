@@ -11,11 +11,11 @@ class HandViewModel: ClockObserver {
     
     @Published var size: CGSize = .zero
     
-    let type: HandType
+    let type: ClockHand
     
     let overlapMultiplier: CGFloat = 0.25       /// Percentage of the hand length to add as overlap.
     
-    init(type: HandType, clockManager: ClockManager) {
+    init(type: ClockHand, clockManager: ClockManager) {
         self.type = type
         super.init(clockManager: clockManager)
     }

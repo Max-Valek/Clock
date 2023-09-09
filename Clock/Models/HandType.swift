@@ -7,8 +7,16 @@
 
 import SwiftUI
 
+protocol ScalablePointer: Hashable {
+    
+    var color: Color { get }
+    var thickness: CGFloat { get }
+    var lengthMultiplier: CGFloat { get }
+    func rotationAngle(for time: Clock) -> Angle
+}
+
 /// Represents each hand on the clock.
-enum HandType: Hashable, CaseIterable {
+enum ClockHand: ScalablePointer, CaseIterable {
     
     case hour, minute, second
     

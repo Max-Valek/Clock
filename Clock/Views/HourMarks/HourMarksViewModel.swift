@@ -31,9 +31,9 @@ class HourMarksViewModel: ClockObserver {
     }
 
     func indicatorColor(for hour: Int) -> Color {
-        if markSeconds(hour) { return HandType.second.color }
-        if markHours(hour) { return HandType.hour.color }
-        if markMinutes(hour) { return HandType.minute.color }
+        if markSeconds(hour) { return ClockHand.second.color }
+        if markHours(hour) { return ClockHand.hour.color }
+        if markMinutes(hour) { return ClockHand.minute.color }
         return .gray
     }
 

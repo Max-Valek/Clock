@@ -12,7 +12,7 @@ struct HandView: View {
     
     @StateObject var vm: HandViewModel
     
-    init(type: HandType, clock: ClockManager) {
+    init(type: ClockHand, clock: ClockManager) {
         _vm = StateObject(wrappedValue: HandViewModel(type: type, clockManager: clock))
     }
     
