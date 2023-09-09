@@ -56,11 +56,11 @@ struct ClockView<HandAnchor: View>: View {
 
 struct ClockView_Previews: PreviewProvider {
     static var previews: some View {
-        ClockView(hands: [.hour, .minute, .second], mode: .hoursOnly) {
+        ClockView(hands: [.hour, .minute, .second], mode: .all) {
             Circle()
                 .fill(.red)
                 .frame(maxWidth: 20)
         }
-            .preferredColorScheme(.dark)
+        .preferredColorScheme(.dark)
     }
 }

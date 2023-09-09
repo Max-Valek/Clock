@@ -13,70 +13,42 @@ extension HourIndicators {
     final class ViewModel: ClockObserver {
 
         @Published var size: CGSize = .zero
-        
-        let indicatorMode: IndicatorMode
+        let indicators: Indicators
         
         init(mode: IndicatorMode, clockManager: ClockManager) {
-            self.indicatorMode = mode
+            self.indicators = Indicators(mode: mode)
             super.init(clockManager: clockManager)
         }
         
-        var topCenter: CGPoint {
-            CGPoint(x: self.size.width / 2, y: 0)
-        }
+        var topCenter: CGPoint { CGPoint(x: self.size.width / 2, y: 0) }
         
-        func indicatorEnd(for minute: Int) -> CGPoint {
+        func indicatorEnd(for index: Int) -> CGPoint {
             CGPoint(
                 x: self.size.width / 2,
-                y: height(for: minute) * self.size.height
+                y: height(for: index) * self.size.height
             )
         }
         
-        func gradient(for minute: Int) -> LinearGradient {
-            return LinearGradient(
-                colors: [color(for: minute)],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
+        func width(for index: Int) -> CGFloat {
+            indicators.width(for: index)
         }
         
-        func width(for minute: Int) -> CGFloat {
-            isHourIndicator(minute) ? 2 : 1
+        func height(for index: Int) -> CGFloat {
+            indicators.height(for: index)
         }
         
-        func height(for minute: Int) -> CGFloat {
-            isHourIndicator(minute) ? IndicatorMode.hourScale : IndicatorMode.minuteScale
+        func rotation(for index: Int) -> Angle {
+            indicators.rotation(for: index)
         }
         
-        func rotation(for minute: Int) -> Angle {
-            Angle(degrees: Double(minute) * 360 / 60)
+        func color(for index: Int) -> Color {
+            isCurrentSecond(index) ?
+            ClockHandType.second.configuration.color :
+            .secondary
         }
         
-        private func isHourIndicator(_ minute: Int) -> Bool {
-            minute % 5 == 0
-        }
-        
-        private func color(for minute: Int) -> Color {
-            if highlightSeconds(minute) { return ClockHandType.second.configuration.color }
-            if highlightHours(minute) { return ClockHandType.minute.configuration.color }
-            if highlightMinutes(minute) { return ClockHandType.hour.configuration.color }
-            return .gray
-        }
-        
-        private func shouldHighlight(_ minute: Int) -> Bool {
-            highlightSeconds(minute) || highlightMinutes(minute) || highlightHours(minute)
-        }
-
-        private func highlightSeconds(_ minute: Int) -> Bool {
-            time.seconds == minute
-        }
-
-        private func highlightMinutes(_ minute: Int) -> Bool {
-            time.minutes == minute
-        }
-
-        private func highlightHours(_ minute: Int) -> Bool {
-            time.hours == minute
+        private func isCurrentSecond(_ index: Int) -> Bool {
+            time.seconds == index
         }
     }
 }

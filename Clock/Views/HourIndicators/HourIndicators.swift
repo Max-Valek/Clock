@@ -18,26 +18,13 @@ struct HourIndicators: View {
     
     var body: some View {
         GeometryReader { proxy in
-//            ForEach(0..<12) { hour in
-//                Path { path in
-//                    path.move(to: vm.topCenter)
-//                    path.addLine(to: vm.indicatorEnd)
-//                }
-//                .stroke(
-//                    vm.gradient(for: hour),
-//                    lineWidth: vm.width(for: hour)
-//                )
-//                .rotationEffect(vm.rotation(for: hour))
-//            }
-//            .onAppear { vm.size = proxy.size }
-            
             ForEach(0..<60) { second in
                 Path { path in
                     path.move(to: vm.topCenter)
                     path.addLine(to: vm.indicatorEnd(for: second))
                 }
                 .stroke(
-                    vm.gradient(for: second),
+                    vm.color(for: second),
                     lineWidth: vm.width(for: second)
                 )
                 .rotationEffect(vm.rotation(for: second))
