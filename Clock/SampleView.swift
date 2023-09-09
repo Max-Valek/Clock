@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// Sample implementation of the Clock component.
 struct SampleView: View {
     
     private let clockSize: CGFloat = 350
@@ -17,7 +18,7 @@ struct SampleView: View {
             
             clockBackground
             
-            ClockView(hands: [.hour, .minute, .second], mode: .hoursOnly) {
+            Clock(hands: [.hour, .minute, .second], mode: .hoursOnly) {
                 Circle()
                     .fill(.red)
                     .frame(maxWidth: 20)

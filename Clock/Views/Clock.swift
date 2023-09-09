@@ -1,5 +1,5 @@
 //
-//  ClockView.swift
+//  Clock.swift
 //  Clock
 //
 //  Created by Max Valek on 9/8/23.
@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 /// View for a basic clock with hours, minutes, and seconds hands along with a marker for each hour.
-struct ClockView<HandAnchor: View>: View {
+struct Clock<HandAnchor: View>: View {
     
     @StateObject private var clockManager = ClockManager()
     let hands: Hands
@@ -42,9 +42,9 @@ struct ClockView<HandAnchor: View>: View {
     }
 }
 
-struct ClockView_Previews: PreviewProvider {
+struct Clock_Previews: PreviewProvider {
     static var previews: some View {
-        ClockView(hands: [.hour, .minute, .second], mode: .all) {
+        Clock(hands: [.hour, .minute, .second], mode: .hoursOnly) {
             Circle()
                 .fill(.red)
                 .frame(maxWidth: 20)

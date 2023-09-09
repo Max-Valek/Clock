@@ -44,7 +44,7 @@ extension HourIndicators {
         func color(for index: Int) -> Color {
             isCurrentSecond(index) ?
             ClockHandType.second.configuration.color :
-            .secondary
+            ( indicators.isHour(index) ? .primary : .gray )
         }
         
         private func isCurrentSecond(_ index: Int) -> Bool {
