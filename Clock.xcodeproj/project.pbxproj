@@ -17,7 +17,6 @@
 		9D565EA52AAB82AC0004F40F /* HandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D565EA42AAB82AC0004F40F /* HandView.swift */; };
 		9D565EA72AAB84D50004F40F /* ClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D565EA62AAB84D50004F40F /* ClockView.swift */; };
 		9D565EA92AAB9AB30004F40F /* Metallic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D565EA82AAB9AB30004F40F /* Metallic.swift */; };
-		9D955C812AABE678002680AD /* ClockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D955C802AABE678002680AD /* ClockViewModel.swift */; };
 		9D955C882AABF7E1002680AD /* HourMarksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D955C872AABF7E1002680AD /* HourMarksViewModel.swift */; };
 		9D955C8A2AABF9DF002680AD /* ClockManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D955C892AABF9DF002680AD /* ClockManager.swift */; };
 		9D955C8C2AABFCBD002680AD /* HandViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D955C8B2AABFCBD002680AD /* HandViewModel.swift */; };
@@ -35,7 +34,6 @@
 		9D565EA42AAB82AC0004F40F /* HandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandView.swift; sourceTree = "<group>"; };
 		9D565EA62AAB84D50004F40F /* ClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockView.swift; sourceTree = "<group>"; };
 		9D565EA82AAB9AB30004F40F /* Metallic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metallic.swift; sourceTree = "<group>"; };
-		9D955C802AABE678002680AD /* ClockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockViewModel.swift; sourceTree = "<group>"; };
 		9D955C872AABF7E1002680AD /* HourMarksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourMarksViewModel.swift; sourceTree = "<group>"; };
 		9D955C892AABF9DF002680AD /* ClockManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockManager.swift; sourceTree = "<group>"; };
 		9D955C8B2AABFCBD002680AD /* HandViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandViewModel.swift; sourceTree = "<group>"; };
@@ -114,7 +112,6 @@
 			isa = PBXGroup;
 			children = (
 				9D955C892AABF9DF002680AD /* ClockManager.swift */,
-				9D955C802AABE678002680AD /* ClockViewModel.swift */,
 				9D955C872AABF7E1002680AD /* HourMarksViewModel.swift */,
 				9D955C8B2AABFCBD002680AD /* HandViewModel.swift */,
 			);
@@ -204,7 +201,6 @@
 				9D565EA32AAB824B0004F40F /* HandType.swift in Sources */,
 				9D565EA12AAB80B10004F40F /* HourMarksView.swift in Sources */,
 				9D565E912AAB7EA00004F40F /* ContentView.swift in Sources */,
-				9D955C812AABE678002680AD /* ClockViewModel.swift in Sources */,
 				9D565EA92AAB9AB30004F40F /* Metallic.swift in Sources */,
 				9D565EA72AAB84D50004F40F /* ClockView.swift in Sources */,
 				9D565EA52AAB82AC0004F40F /* HandView.swift in Sources */,

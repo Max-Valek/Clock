@@ -11,19 +11,19 @@ import Combine
 /// View for a basic clock with hours, minutes, and seconds hands along with a marker for each hour.
 struct ClockView: View {
     
-    @EnvironmentObject var clockManager: ClockManager
+    @StateObject var vm = ClockManager()
     
     var body: some View {
         ZStack {
-            HourMarksView()
-            HandView(hand: .second)
-            HandView(hand: .hour)
-            HandView(hand: .minute)
+            HourMarksView(vm)
+            ForEach(HandType.allCases, id: \.self) { hand in
+                HandView(for: hand, vm)
+            }
         }
         .padding()
         .aspectRatio(1, contentMode: .fit)
-        .onAppear { clockManager.subscribe() }
-        .onDisappear { clockManager.unsubscribe() }
+        .onAppear { vm.subscribe() }
+        .onDisappear { vm.unsubscribe() }
     }
 }
 

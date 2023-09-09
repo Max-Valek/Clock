@@ -10,14 +10,14 @@ import SwiftUI
 /// Draws a line indicator for each hour around the clock.
 struct HourMarksView: View {
     
-    @EnvironmentObject var clockManager: ClockManager
-
+    @StateObject var vm: HourMarksViewModel
+    
+    init(_ clock: ClockManager) {
+        _vm = StateObject(wrappedValue: HourMarksViewModel(clockManager: clock))
+    }
+    
     var body: some View {
-        
-        let vm = HourMarksViewModel(time: clockManager.time)
-        
         GeometryReader { proxy in
-            
             ForEach(0..<12) { i in
                 Path { path in
                     path.move(to: CGPoint(x: proxy.size.width / 2, y: 0))

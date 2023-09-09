@@ -8,7 +8,7 @@
 import SwiftUI
 
 /// Represents each hand on the clock.
-enum HandType {
+enum HandType: Hashable, CaseIterable {
     
     case hour, minute, second
     
