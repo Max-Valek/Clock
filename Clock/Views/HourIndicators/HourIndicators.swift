@@ -11,9 +11,9 @@ import SwiftUI
 struct HourIndicators: View {
     
     @StateObject private var vm: ViewModel
-    
-    init(mode: IndicatorMode, clock: ClockManager) {
-        _vm = StateObject(wrappedValue: ViewModel(mode: mode, clockManager: clock))
+
+    init(clock: ClockManager) {
+        _vm = StateObject(wrappedValue: ViewModel(clockManager: clock))
     }
     
     var body: some View {

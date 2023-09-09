@@ -17,7 +17,7 @@ enum ClockHandType: Int, CaseIterable {
     case hour
     case minute
     case second
-    
+
     var configuration: ClockHandConfiguration {
         switch self {
         case .hour:

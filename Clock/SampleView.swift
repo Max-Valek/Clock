@@ -18,7 +18,7 @@ struct SampleView: View {
             
             clockBackground
             
-            Clock(hands: [.hour, .minute, .second], mode: .hoursOnly) {
+            AnalogClock(hands: [.hour, .minute, .second], mode: .hoursOnly) {
                 Circle()
                     .fill(.red)
                     .frame(maxWidth: 20)

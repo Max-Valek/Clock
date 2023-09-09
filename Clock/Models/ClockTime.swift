@@ -5,7 +5,27 @@
 //  Created by Max Valek on 9/8/23.
 //
 
-import Foundation
+import SwiftUI
+
+struct Clock {
+    let time: ClockTime
+    let hands: [ClockHandType]
+    let indicatorMode: IndicatorMode
+    let primaryColor: Color
+    let secondaryColor: Color
+    
+    init(hands: [ClockHandType],
+         indicatorMode: IndicatorMode,
+         primaryColor: Color,
+         secondaryColor: Color
+    ) {
+        self.time = ClockTime(date: Date())
+        self.hands = hands
+        self.indicatorMode = indicatorMode
+        self.primaryColor = primaryColor
+        self.secondaryColor = secondaryColor
+    }
+}
 
 /// Represents the current time for the clock.
 struct ClockTime {
@@ -20,3 +40,19 @@ struct ClockTime {
         seconds = Calendar.current.component(.second, from: .now)
     }
 }
+
+//struct ClockHands {
+//    let primaryColor: Color
+//    let secondaryColor: Color
+//    let types: [ClockHandType]
+//    
+//    init(
+//        primaryColor: Color = .primary,
+//        secondaryColor: Color = .red,
+//        types: [ClockHandType] = [.hour, .minute, .second]
+//    ) {
+//        self.primaryColor = primaryColor
+//        self.secondaryColor = secondaryColor
+//        self.types = types
+//    }
+//}

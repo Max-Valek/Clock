@@ -7,13 +7,12 @@
 
 import SwiftUI
 
-
 struct HandView: View {
     
-    @StateObject private var vm: NewHandViewModel
+    @StateObject private var vm: HandViewModel
     
     init(type: ClockHandType, clock: ClockManager) {
-        _vm = StateObject(wrappedValue: NewHandViewModel(type: type, clockManager: clock))
+        _vm = StateObject(wrappedValue: HandViewModel(type: type, clockManager: clock))
     }
     
     var body: some View {
