@@ -13,10 +13,14 @@ extension HourIndicators {
     final class ViewModel: ClockObserver {
 
         @Published var size: CGSize = .zero
+        let clock: Clock
         let indicators: Indicators
+        let indicatorCount: Int
         
         override init(clockManager: ClockManager) {
+            self.clock = clockManager.clock
             self.indicators = Indicators(mode: clockManager.clock.indicatorMode)
+            self.indicatorCount = self.indicators.count
             super.init(clockManager: clockManager)
         }
         
@@ -29,22 +33,15 @@ extension HourIndicators {
             )
         }
         
-        func width(for index: Int) -> CGFloat {
-            indicators.width(for: index)
-        }
+        func width(for index: Int) -> CGFloat { indicators.width(for: index) }
         
-        func height(for index: Int) -> CGFloat {
-            indicators.height(for: index)
-        }
+        func height(for index: Int) -> CGFloat { indicators.height(for: index) }
         
-        func rotation(for index: Int) -> Angle {
-            indicators.rotation(for: index)
-        }
+        func rotation(for index: Int) -> Angle { indicators.rotation(for: index) }
         
         func color(for index: Int) -> Color {
-            isCurrentSecond(index) ?
-            ClockHandType.second.configuration.color :
-            ( indicators.isHour(index) ? .primary : .gray )
+            if isCurrentSecond(index) { return clock.secondaryColor }
+            return clock.primaryColor.opacity(indicators.isHour(index) ? 1 : 0.5)
         }
         
         private func isCurrentSecond(_ index: Int) -> Bool {

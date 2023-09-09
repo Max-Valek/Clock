@@ -22,6 +22,7 @@ struct SampleView: View {
                 Circle()
                     .fill(.red)
                     .frame(maxWidth: 20)
+                    .shadow(color: .black, radius: 4)
             }
             .frame(maxWidth: self.clockSize)
         }

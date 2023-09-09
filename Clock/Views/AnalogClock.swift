@@ -48,10 +48,15 @@ struct AnalogClock<HandAnchor: View>: View {
 
 struct AnalogClock_Previews: PreviewProvider {
     static var previews: some View {
-        AnalogClock(hands: [.hour, .minute, .second], mode: .hoursOnly) {
+        AnalogClock(
+            hands: [.hour, .minute, .second],
+            mode: .hoursOnly,
+            primaryColor: .primary,
+            secondaryColor: .red
+        ) {
             Circle()
                 .fill(.red)
-                .frame(maxWidth: 20)
+                .frame(width: 20)
         }
         .preferredColorScheme(.dark)
     }
