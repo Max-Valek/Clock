@@ -2,7 +2,7 @@
 //  Hands.swift
 //  Clock
 //
-//  Created by Max Valek on 9/9/23.
+//  Created by Max Valek on 9/8/23.
 //
 
 import SwiftUI
@@ -13,63 +13,121 @@ struct ClockHandConfiguration {
     let thickness: CGFloat
 }
 
-struct Hands {
-    enum ClockHandType: Int, CaseIterable {
-        case hour, minute, second
+enum ClockHandType: Int, CaseIterable {
+    case hour
+    case minute
+    case second
+    
+    var configuration: ClockHandConfiguration {
+        switch self {
+        case .hour:
+            return ClockHandConfiguration(color: .primary, lengthScale: 0.65, thickness: 8)
+        case .minute:
+            return ClockHandConfiguration(color: .primary, lengthScale: 0.85, thickness: 4)
+        case .second:
+            return ClockHandConfiguration(color: .red, lengthScale: 0.85, thickness: 2)
+        }
     }
     
+    func rotation(for time: ClockTime) -> Angle {
+        switch self {
+        case .hour: return Angle(degrees: (360 / 12) * (Double(time.hours) + Double(time.minutes) / 60))
+        case .minute: return Angle(degrees: Double(time.minutes) * 360 / 60)
+        case .second: return Angle(degrees: Double(time.seconds) * 360 / 60)
+        }
+    }
+}
+
+struct Hands {
     let primaryColor: Color
     let secondaryColor: Color
-    let hasSmallIndicators: Bool
-    let selectedHandTypes: [ClockHandType] // Allow the user to specify selected hand types
+    let types: [ClockHandType]
     
     init(
         primaryColor: Color = .primary,
         secondaryColor: Color = .red,
-        hasSmallIndicators: Bool = true,
-        selectedHandTypes: [ClockHandType] = [.hour, .minute, .second]
+        types: [ClockHandType] = [.hour, .minute, .second]
     ) {
         self.primaryColor = primaryColor
         self.secondaryColor = secondaryColor
-        self.hasSmallIndicators = hasSmallIndicators
-        self.selectedHandTypes = selectedHandTypes
-    }
-    
-    func configuration(for hand: ClockHandType) -> ClockHandConfiguration {
-        switch hand {
-        case .hour:
-            return ClockHandConfiguration(color: primaryColor, lengthScale: 0.65, thickness: 8)
-        case .minute:
-            return ClockHandConfiguration(color: primaryColor, lengthScale: 0.85, thickness: 4)
-        case .second:
-            return ClockHandConfiguration(color: secondaryColor, lengthScale: 0.85, thickness: 2)
-        }
+        self.types = types
     }
 }
 
-struct NewHandView: View {
-    let hands = Hands(selectedHandTypes: [.hour, .minute, .second]) // Customize selected hand types
-
-    let maxLength: CGFloat = 100
-
-    var body: some View {
-        VStack {
-            ForEach(hands.selectedHandTypes, id: \.rawValue) { hand in
-                if let config = hands.configuration(for: hand) {
-                    Capsule()
-                        .fill(config.color)
-                        .frame(width: config.lengthScale * maxLength, height: config.thickness)
-                }
-            }
-        }
-        .frame(maxWidth: .infinity)
-    }
-}
-
-struct NewHandView_Previews: PreviewProvider {
-
-    static var previews: some View {
-        NewHandView()
-            .preferredColorScheme(.dark)
-    }
-}
+///// Represents each hand on the clock.
+//struct Hand: ScalableHand {
+//    let type: Type
+//    let color: Color
+//    let thickness: CGFloat
+//    let lengthMultiplier: CGFloat
+//
+//    enum `Type` {
+//        case hour
+//        case minute
+//        case second
+//    }
+//
+//    func rotationAngle(for time: ClockTime) -> Angle {
+//        Angle(degrees: 0)
+//    }
+//
+//    static func hour() -> Hand {
+//        return Hand(type: .hour, color: .primary, thickness: 8, lengthMultiplier: 0.6)
+//    }
+//
+//    static func minute() -> Hand {
+//        return Hand(type: .minute, color: .primary, thickness: 4, lengthMultiplier: 0.85)
+//    }
+//
+//    static func second() -> Hand {
+//        return Hand(type: .second, color: .red, thickness: 1, lengthMultiplier: 0.85)
+//    }
+//}
+//
+///// Protocol for a resizable and rotatable clock hand.
+//protocol ScalableHand: Hashable {
+//    var color: Color { get }
+//    var thickness: CGFloat { get }
+//    var lengthMultiplier: CGFloat { get }
+//    func rotationAngle(for time: ClockTime) -> Angle
+//}
+//
+///// Represents each hand on the clock.
+//enum HandType: ScalableHand, CaseIterable {
+//    case hour, minute, second
+//
+//    var color: Color {
+//        switch self {
+//        case .hour: return .primary
+//        case .minute: return .primary
+//        case .second: return .red
+//        }
+//    }
+//
+//    /// Thickness of the different hands.
+//    var thickness: CGFloat {
+//        switch self {
+//        case .hour: return 8
+//        case .second: return 1
+//        case .minute: return 4
+//        }
+//    }
+//
+//    /// Percentage of the clock radius the hand will span (from center of clock to end).
+//    var lengthMultiplier: CGFloat {
+//        switch self {
+//        case .hour: return 0.6
+//        case .minute: return 0.85
+//        case .second: return 0.85
+//        }
+//    }
+//
+//    /// Angle to rotate the hand based on time.
+//    func rotationAngle(for time: ClockTime) -> Angle {
+//        switch self {
+//        case .hour: return Angle(degrees: (360 / 12) * (Double(time.hours) + Double(time.minutes) / 60))
+//        case .minute: return Angle(degrees: Double(time.minutes) * 360 / 60)
+//        case .second: return Angle(degrees: Double(time.seconds) * 360 / 60)
+//        }
+//    }
+//}

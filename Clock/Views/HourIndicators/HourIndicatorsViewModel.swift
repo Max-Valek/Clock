@@ -59,9 +59,9 @@ extension HourIndicators {
         }
         
         private func color(for minute: Int) -> Color {
-            if highlightSeconds(minute) { return HandType.second.color }
-            if highlightHours(minute) { return HandType.hour.color }
-            if highlightMinutes(minute) { return HandType.minute.color }
+            if highlightSeconds(minute) { return ClockHandType.second.configuration.color }
+            if highlightHours(minute) { return ClockHandType.minute.configuration.color }
+            if highlightMinutes(minute) { return ClockHandType.hour.configuration.color }
             return .gray
         }
         

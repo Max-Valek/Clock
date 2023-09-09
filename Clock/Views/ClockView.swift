@@ -12,26 +12,18 @@ import Combine
 struct ClockView: View {
     
     @StateObject private var clockManager = ClockManager()
+    let hands: Hands
     
-    /* Possible props
-     Indicators:
-     - hour and minute scale
-     - show minutes
-     
-     Hands:
-     - array of hand types
-     
-     Middle circle:
-     - color (or secondary)
-     - size
-     */
+    init(hands: [ClockHandType]) {
+        self.hands = Hands(types: hands)
+    }
     
     var body: some View {
         ZStack {
             HourIndicators(clock: clockManager)
             
-            ForEach(HandType.allCases, id: \.self) { hand in
-                ClockHand(type: hand, clock: clockManager)
+            ForEach(hands.types, id: \.self) { hand in
+                HandView(type: hand, clock: clockManager)
             }
             
             Circle()
@@ -43,11 +35,26 @@ struct ClockView: View {
         .onAppear { clockManager.subscribe() }
         .onDisappear { clockManager.unsubscribe() }
     }
+    
+//    @StateObject private var clockManager = ClockManager()
+//
+//    /* Possible props
+//     Indicators:
+//     - hour and minute scale
+//     - show minutes
+//
+//     Hands:
+//     - array of hand types
+//
+//     Middle circle:
+//     - color (or secondary)
+//     - size
+//     */
 }
 
 struct ClockView_Previews: PreviewProvider {
     static var previews: some View {
-        ClockView()
+        ClockView(hands: [.hour, .minute, .second])
             .preferredColorScheme(.dark)
     }
 }

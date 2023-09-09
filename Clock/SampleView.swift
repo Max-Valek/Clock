@@ -17,7 +17,7 @@ struct SampleView: View {
             
             clockBackground
             
-            ClockView()
+            ClockView(hands: [.hour, .minute, .second])
                 .frame(maxWidth: self.clockSize)
         }
         .frame(maxWidth: .infinity)
