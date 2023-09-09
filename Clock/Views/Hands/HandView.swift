@@ -10,10 +10,10 @@ import SwiftUI
 /// View representing a hand on the clock, rotated based on time.
 struct HandView: View {
     
-    @StateObject var vm: HandViewModel
+    @StateObject private var vm: ViewModel
     
-    init(type: ClockHand, clock: ClockManager) {
-        _vm = StateObject(wrappedValue: HandViewModel(type: type, clockManager: clock))
+    init(type: HandType, clock: ClockManager) {
+        _vm = StateObject(wrappedValue: ViewModel(type: type, clockManager: clock))
     }
     
     var body: some View {

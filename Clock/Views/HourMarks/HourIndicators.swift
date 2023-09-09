@@ -1,5 +1,5 @@
 //
-//  HourMarksView.swift
+//  HourIndicators.swift
 //  Clock
 //
 //  Created by Max Valek on 9/8/23.
@@ -8,12 +8,12 @@
 import SwiftUI
 
 /// Draws a line indicator for each hour around the clock.
-struct HourMarksView: View {
+struct HourIndicators: View {
     
-    @StateObject var vm: HourMarksViewModel
+    @StateObject private var vm: ViewModel
     
     init(clock: ClockManager) {
-        _vm = StateObject(wrappedValue: HourMarksViewModel(clockManager: clock))
+        _vm = StateObject(wrappedValue: ViewModel(clockManager: clock))
     }
     
     var body: some View {

@@ -15,8 +15,9 @@ struct ClockView: View {
     
     var body: some View {
         ZStack {
-            HourMarksView(clock: clockManager)
-            ForEach(ClockHand.allCases, id: \.self) { hand in
+            HourIndicators(clock: clockManager)
+            
+            ForEach(HandType.allCases, id: \.self) { hand in
                 HandView(type: hand, clock: clockManager)
             }
         }
@@ -30,7 +31,6 @@ struct ClockView: View {
 struct ClockView_Previews: PreviewProvider {
     static var previews: some View {
         ClockView()
-            //.environmentObject(ClockManager())
             .preferredColorScheme(.dark)
     }
 }

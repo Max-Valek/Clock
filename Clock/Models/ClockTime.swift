@@ -1,5 +1,5 @@
 //
-//  Clock.swift
+//  ClockTime.swift
 //  Clock
 //
 //  Created by Max Valek on 9/8/23.
@@ -8,7 +8,7 @@
 import Foundation
 
 /// Represents the current time for the clock.
-struct Clock {
+struct ClockTime {
     
     let hours: Int
     let minutes: Int

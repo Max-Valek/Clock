@@ -11,7 +11,7 @@ import Combine
 /// Superclass for view models that subscribe to ClockManager.
 class ClockObserver: ObservableObject {
     
-    @Published var time: Clock
+    @Published var time: ClockTime
     private var cancellable: AnyCancellable?
 
     init(clockManager: ClockManager) {

@@ -10,18 +10,16 @@ import Combine
 
 class ClockManager: ObservableObject {
     
-    @Published var time: Clock = Clock(date: Date())
+    @Published var time: ClockTime = ClockTime(date: Date())
     @Published var timerSubscription: Cancellable? = nil
     
     /// Subscribe to timer to get its updates.
     func subscribe() {
         timerSubscription = Timer.publish(every: 1, on: .main, in: .common)
             .autoconnect()
-            .map(Clock.init)
+            .map(ClockTime.init)
             .assign(to: \.time, on: self)
     }
-    
-    // MARK: ClockView
     
     /// Unsubscribe from timer.
     func unsubscribe() {
