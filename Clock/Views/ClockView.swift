@@ -16,7 +16,10 @@ struct ClockView<HandAnchor: View>: View {
     let anchor: HandAnchor
     let indicatorMode: IndicatorMode
     
-    init(hands: [ClockHandType] = [.hour, .minute, .second], mode: IndicatorMode = .all, anchor: @escaping () -> HandAnchor) {
+    init(hands: [ClockHandType] = [.hour, .minute, .second],
+         mode: IndicatorMode = .all,
+         anchor: @escaping () -> HandAnchor
+    ) {
         self.hands = Hands(types: hands)
         self.indicatorMode = mode
         self.anchor = anchor()
@@ -37,21 +40,6 @@ struct ClockView<HandAnchor: View>: View {
         .onAppear { clockManager.subscribe() }
         .onDisappear { clockManager.unsubscribe() }
     }
-    
-//    @StateObject private var clockManager = ClockManager()
-//
-//    /* Possible props
-//     Indicators:
-//     - hour and minute scale
-//     - show minutes
-//
-//     Hands:
-//     - array of hand types
-//
-//     Middle circle:
-//     - color (or secondary)
-//     - size
-//     */
 }
 
 struct ClockView_Previews: PreviewProvider {
