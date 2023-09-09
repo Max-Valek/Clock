@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  SampleView.swift
 //  Clock
 //
 //  Created by Max Valek on 9/8/23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct SampleView: View {
     
     private let clockSize: CGFloat = 350
     
@@ -26,7 +26,7 @@ struct ContentView: View {
 
 // MARK: - Components
 
-extension ContentView {
+extension SampleView {
     /// Platinum metallic background
     private var metallicBackground: some View {
         Metallic.platinum.linearGradient
@@ -52,9 +52,9 @@ extension ContentView {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct SampleView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        SampleView()
             //.environmentObject(ClockManager())
             .preferredColorScheme(.dark)
     }

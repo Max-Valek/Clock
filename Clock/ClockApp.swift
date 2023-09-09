@@ -10,12 +10,9 @@ import SwiftUI
 @main
 struct ClockApp: App {
     
-    //@StateObject var clockManager = ClockManager()
-    
     var body: some Scene {
         WindowGroup {
-            ContentView()
-               // .environmentObject(clockManager)
+            SampleView()
         }
     }
 }

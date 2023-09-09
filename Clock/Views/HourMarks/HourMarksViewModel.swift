@@ -9,32 +9,16 @@ import SwiftUI
 import Combine
 
 
-class HourMarksViewModel: ClockManagerObserver {
-
-    override init(clockManager: ClockManager) {
-        super.init(clockManager: clockManager)
-    }
-    
-//    @Published var time: Clock
-//
-//    private var clockManager: ClockManager
-//    private var cancellable: AnyCancellable?
-//
-//    init(clockManager: ClockManager) {
-//        self.clockManager = clockManager
-//        self.time = clockManager.time
-//
-//        // Subscribe to changes in the ClockManager's time
-//        cancellable = clockManager.$time
-//            .sink { [weak self] newTime in
-//                self?.time = newTime
-//            }
-//    }
+class HourMarksViewModel: ClockObserver {
 
     @Published var size: CGSize = .zero
 
     let lengthMultiplier: CGFloat = 0.05
-
+    
+    override init(clockManager: ClockManager) {
+        super.init(clockManager: clockManager)
+    }
+    
     func highlighted(_ hour: Int) -> Bool {
         markSeconds(hour) || markMinutes(hour) || markHours(hour)
     }

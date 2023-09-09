@@ -12,7 +12,7 @@ struct HourMarksView: View {
     
     @StateObject var vm: HourMarksViewModel
     
-    init(_ clock: ClockManager) {
+    init(clock: ClockManager) {
         _vm = StateObject(wrappedValue: HourMarksViewModel(clockManager: clock))
     }
     
