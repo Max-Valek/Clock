@@ -15,7 +15,7 @@ extension HourIndicators {
         @Published var size: CGSize = .zero
 
         let hourScale: CGFloat = 0.05
-        let minuteScale: CGFloat = 0.02
+        let minuteScale: CGFloat = 0.025
         
         override init(clockManager: ClockManager) {
             super.init(clockManager: clockManager)

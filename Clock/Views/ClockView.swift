@@ -13,6 +13,19 @@ struct ClockView: View {
     
     @StateObject private var clockManager = ClockManager()
     
+    /* Possible props
+     Indicators:
+     - hour and minute scale
+     - show minutes
+     
+     Hands:
+     - array of hand types
+     
+     Middle circle:
+     - color (or secondary)
+     - size
+     */
+    
     var body: some View {
         ZStack {
             HourIndicators(clock: clockManager)
@@ -20,6 +33,10 @@ struct ClockView: View {
             ForEach(HandType.allCases, id: \.self) { hand in
                 ClockHand(type: hand, clock: clockManager)
             }
+            
+            Circle()
+                .fill(.red)
+                .frame(maxWidth: 20)
         }
         .padding()
         .aspectRatio(1, contentMode: .fit)

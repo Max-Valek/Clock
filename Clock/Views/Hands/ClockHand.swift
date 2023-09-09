@@ -20,7 +20,7 @@ struct ClockHand: View {
         GeometryReader { proxy in
             Capsule()
                 .fill(vm.type.color)
-                .frame(width: vm.type.thickness, height: vm.totalLength)
+                .frame(width: vm.type.thickness, height: vm.length)
                 .position(vm.anchorPoint)
                 .rotationEffect(vm.rotation)
                 .onAppear { vm.size = proxy.size }

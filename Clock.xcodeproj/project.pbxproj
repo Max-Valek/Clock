@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D01F03C2AACE7FC00184C1B /* Hands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D01F03B2AACE7FC00184C1B /* Hands.swift */; };
 		9D565E8F2AAB7EA00004F40F /* ClockApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D565E8E2AAB7EA00004F40F /* ClockApp.swift */; };
 		9D565E912AAB7EA00004F40F /* SampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D565E902AAB7EA00004F40F /* SampleView.swift */; };
 		9D565E932AAB7EA10004F40F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D565E922AAB7EA10004F40F /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9D01F03B2AACE7FC00184C1B /* Hands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hands.swift; sourceTree = "<group>"; };
 		9D565E8B2AAB7EA00004F40F /* Clock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D565E8E2AAB7EA00004F40F /* ClockApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockApp.swift; sourceTree = "<group>"; };
 		9D565E902AAB7EA00004F40F /* SampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleView.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 			children = (
 				9D565E9E2AAB7FB90004F40F /* ClockTime.swift */,
 				9D565EA22AAB824B0004F40F /* HandType.swift */,
+				9D01F03B2AACE7FC00184C1B /* Hands.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 				9D565E9F2AAB7FB90004F40F /* ClockTime.swift in Sources */,
 				9D955C8A2AABF9DF002680AD /* ClockManager.swift in Sources */,
 				9D955C8E2AAC17A0002680AD /* ClockObserver.swift in Sources */,
+				9D01F03C2AACE7FC00184C1B /* Hands.swift in Sources */,
 				9D565EA32AAB824B0004F40F /* HandType.swift in Sources */,
 				9D565EA12AAB80B10004F40F /* HourIndicators.swift in Sources */,
 				9D565E912AAB7EA00004F40F /* SampleView.swift in Sources */,

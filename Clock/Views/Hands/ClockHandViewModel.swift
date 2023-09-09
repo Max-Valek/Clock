@@ -14,7 +14,7 @@ extension ClockHand {
         @Published var size: CGSize = .zero
         
         let type: HandType
-        let overlapMultiplier: CGFloat = 0.15       /// Percentage of the hand length to add as overlap.
+        //let overlapMultiplier: CGFloat = 0.15       /// Percentage of the hand length to add as overlap.
         
         init(type: HandType, clockManager: ClockManager) {
             self.type = type
@@ -22,16 +22,18 @@ extension ClockHand {
         }
         
         /// Hand length from its scale factor and the additional amount (on other side of anchor) for overlap.
-        var totalLength: CGFloat {
-            lengthFromCenter() + overlapAmount()
+        var length: CGFloat {
+//            lengthFromCenter() + overlapAmount()
+            let radius = min(size.width, size.height) / 2
+            return self.type.lengthMultiplier * radius
         }
         
         /// Point to rotate around.
         var anchorPoint: CGPoint {
             let center = CGPoint(x: size.width / 2, y: size.height / 2)
-            let middle = totalLength / 2
-            let amountToOffset = middle - overlapAmount()
-            return CGPoint(x: center.x, y: center.y - amountToOffset)
+//            let middle = length / 2
+//            let amountToOffset = middle - overlapAmount()
+            return CGPoint(x: center.x, y: center.y - (length / 2))
         }
         
         /// Rotation angle based on hand type and time.
@@ -41,7 +43,8 @@ extension ClockHand {
         
         /// Amount to add past the center for overlapping.
         private func overlapAmount() -> CGFloat {
-            lengthFromCenter() * overlapMultiplier
+            //lengthFromCenter() * overlapMultiplier
+            0
         }
         
         /// Length of hand from center of the clock.

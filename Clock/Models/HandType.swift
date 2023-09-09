@@ -7,6 +7,36 @@
 
 import SwiftUI
 
+/// Represents each hand on the clock.
+struct Hand: ScalableHand {
+    let type: Type
+    let color: Color
+    let thickness: CGFloat
+    let lengthMultiplier: CGFloat
+    
+    enum `Type` {
+        case hour
+        case minute
+        case second
+    }
+    
+    func rotationAngle(for time: ClockTime) -> Angle {
+        Angle(degrees: 0)
+    }
+    
+    static func hour() -> Hand {
+        return Hand(type: .hour, color: .primary, thickness: 8, lengthMultiplier: 0.6)
+    }
+    
+    static func minute() -> Hand {
+        return Hand(type: .minute, color: .primary, thickness: 4, lengthMultiplier: 0.85)
+    }
+    
+    static func second() -> Hand {
+        return Hand(type: .second, color: .red, thickness: 1, lengthMultiplier: 0.85)
+    }
+}
+
 /// Protocol for a resizable and rotatable clock hand.
 protocol ScalableHand: Hashable {
     var color: Color { get }
@@ -22,7 +52,7 @@ enum HandType: ScalableHand, CaseIterable {
     var color: Color {
         switch self {
         case .hour: return .primary
-        case .minute: return .secondary
+        case .minute: return .primary
         case .second: return .red
         }
     }
@@ -31,7 +61,7 @@ enum HandType: ScalableHand, CaseIterable {
     var thickness: CGFloat {
         switch self {
         case .hour: return 8
-        case .second: return 2
+        case .second: return 1
         case .minute: return 4
         }
     }
@@ -40,8 +70,8 @@ enum HandType: ScalableHand, CaseIterable {
     var lengthMultiplier: CGFloat {
         switch self {
         case .hour: return 0.6
-        case .minute: return 0.8
-        case .second: return 0.8
+        case .minute: return 0.85
+        case .second: return 0.85
         }
     }
     
