@@ -14,7 +14,7 @@ struct ClockView: View {
     @StateObject private var clockManager = ClockManager()
     let hands: Hands
     
-    init(hands: [ClockHandType]) {
+    init(hands: [ClockHandType] = [.hour, .minute, .second]) {
         self.hands = Hands(types: hands)
     }
     

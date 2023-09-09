@@ -21,22 +21,12 @@ final class NewHandViewModel: ClockObserver {
     var color: Color { type.configuration.color }
     
     var thickness: CGFloat { type.configuration.thickness }
-    var length: CGFloat {
-        let radius = min(size.width, size.height) / 2
-        return type.configuration.lengthScale * radius
-    }
     
-    var anchorPoint: CGPoint {
-        let center = CGPoint(x: size.width / 2, y: size.height / 2)
-        return CGPoint(x: center.x, y: center.y - (length / 2))
-    }
+    var length: CGFloat { type.configuration.lengthScale * radius }
     
-    var rotation: Angle {
-        type.rotation(for: time)
-    }
+    var anchorPoint: CGPoint { return CGPoint(x: radius, y: radius - (length / 2)) }
     
-    private func lengthFromCenter() -> CGFloat {
-        let radius = min(size.width, size.height) / 2
-        return type.configuration.lengthScale * radius
-    }
+    var rotation: Angle { type.rotation(for: time) }
+    
+    private var radius: CGFloat { min(size.width, size.height) / 2 }
 }
