@@ -17,8 +17,12 @@ struct SampleView: View {
             
             clockBackground
             
-            ClockView(hands: [.hour, .minute, .second])
-                .frame(maxWidth: self.clockSize)
+            ClockView(hands: [.hour, .minute, .second], mode: .hoursOnly) {
+                Circle()
+                    .fill(.red)
+                    .frame(maxWidth: 20)
+            }
+            .frame(maxWidth: self.clockSize)
         }
         .frame(maxWidth: .infinity)
     }

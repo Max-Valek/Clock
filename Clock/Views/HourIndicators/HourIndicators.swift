@@ -12,8 +12,8 @@ struct HourIndicators: View {
     
     @StateObject private var vm: ViewModel
     
-    init(clock: ClockManager) {
-        _vm = StateObject(wrappedValue: ViewModel(clockManager: clock))
+    init(mode: IndicatorMode, clock: ClockManager) {
+        _vm = StateObject(wrappedValue: ViewModel(mode: mode, clockManager: clock))
     }
     
     var body: some View {

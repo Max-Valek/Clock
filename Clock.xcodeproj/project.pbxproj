@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9D01F0402AACF6FC00184C1B /* HandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D01F03F2AACF6FC00184C1B /* HandView.swift */; };
 		9D01F0422AACF72900184C1B /* HandViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D01F0412AACF72900184C1B /* HandViewModel.swift */; };
+		9D01F0442AACFC4200184C1B /* Indicators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D01F0432AACFC4200184C1B /* Indicators.swift */; };
 		9D565E8F2AAB7EA00004F40F /* ClockApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D565E8E2AAB7EA00004F40F /* ClockApp.swift */; };
 		9D565E912AAB7EA00004F40F /* SampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D565E902AAB7EA00004F40F /* SampleView.swift */; };
 		9D565E932AAB7EA10004F40F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D565E922AAB7EA10004F40F /* Assets.xcassets */; };
@@ -26,6 +27,7 @@
 /* Begin PBXFileReference section */
 		9D01F03F2AACF6FC00184C1B /* HandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandView.swift; sourceTree = "<group>"; };
 		9D01F0412AACF72900184C1B /* HandViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandViewModel.swift; sourceTree = "<group>"; };
+		9D01F0432AACFC4200184C1B /* Indicators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indicators.swift; sourceTree = "<group>"; };
 		9D565E8B2AAB7EA00004F40F /* Clock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D565E8E2AAB7EA00004F40F /* ClockApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockApp.swift; sourceTree = "<group>"; };
 		9D565E902AAB7EA00004F40F /* SampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleView.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				9D565E9E2AAB7FB90004F40F /* ClockTime.swift */,
+				9D01F0432AACFC4200184C1B /* Indicators.swift */,
 				9D565EA22AAB824B0004F40F /* Hands.swift */,
 			);
 			path = Models;
@@ -224,6 +227,7 @@
 				9D565E912AAB7EA00004F40F /* SampleView.swift in Sources */,
 				9D565EA92AAB9AB30004F40F /* Metallic.swift in Sources */,
 				9D01F0422AACF72900184C1B /* HandViewModel.swift in Sources */,
+				9D01F0442AACFC4200184C1B /* Indicators.swift in Sources */,
 				9D565EA72AAB84D50004F40F /* ClockView.swift in Sources */,
 				9D565E8F2AAB7EA00004F40F /* ClockApp.swift in Sources */,
 				9D955C882AABF7E1002680AD /* HourIndicatorsViewModel.swift in Sources */,
