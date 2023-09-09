@@ -40,19 +40,3 @@ struct ClockTime {
         seconds = Calendar.current.component(.second, from: .now)
     }
 }
-
-//struct ClockHands {
-//    let primaryColor: Color
-//    let secondaryColor: Color
-//    let types: [ClockHandType]
-//    
-//    init(
-//        primaryColor: Color = .primary,
-//        secondaryColor: Color = .red,
-//        types: [ClockHandType] = [.hour, .minute, .second]
-//    ) {
-//        self.primaryColor = primaryColor
-//        self.secondaryColor = secondaryColor
-//        self.types = types
-//    }
-//}

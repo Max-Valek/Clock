@@ -37,21 +37,10 @@ struct Indicators {
     }
     
     var count: Int {
-//        switch mode {
-//        case .all: return 60
-//        case .hoursOnly: return 12
-//        case .none: return 0
-//        }
-
         mode == .none ? 0 : 60
     }
     
     func isHour(_ index: Int) -> Bool {
-//        switch mode {
-//        case .all: return index % 5 == 0
-//        case .hoursOnly: return true
-//        case .none: return false
-//        }
         mode == .none ? false : index % 5 == 0
     }
     

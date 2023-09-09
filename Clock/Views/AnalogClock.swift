@@ -46,41 +46,6 @@ struct AnalogClock<HandAnchor: View>: View {
     }
 }
 
-/// View for a basic clock with hours, minutes, and seconds hands along with a marker for each hour.
-//struct AnalogClock<HandAnchor: View>: View {
-//
-//    @StateObject private var clockManager = ClockManager()
-//    let hands: Hands
-//    let anchor: HandAnchor
-//    let indicatorMode: IndicatorMode
-//
-//
-//    init(hands: [ClockHandType] = [.hour, .minute, .second],
-//         mode: IndicatorMode = .all,
-//         anchor: @escaping () -> HandAnchor
-//    ) {
-//        self.hands = Hands(types: hands)
-//        self.indicatorMode = mode
-//        self.anchor = anchor()
-//    }
-//
-//    var body: some View {
-//        ZStack {
-//            HourIndicators(mode: indicatorMode, clock: clockManager)
-//
-//            ForEach(hands.types, id: \.self) { hand in
-//                HandView(type: hand, clock: clockManager)
-//            }
-//
-//            anchor
-//        }
-//        .padding()
-//        .aspectRatio(1, contentMode: .fit)
-//        .onAppear { clockManager.subscribe() }
-//        .onDisappear { clockManager.unsubscribe() }
-//    }
-//}
-
 struct AnalogClock_Previews: PreviewProvider {
     static var previews: some View {
         AnalogClock(hands: [.hour, .minute, .second], mode: .hoursOnly) {

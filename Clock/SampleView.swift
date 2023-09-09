@@ -14,7 +14,7 @@ struct SampleView: View {
     
     var body: some View {
         ZStack {
-            metallicBackground
+            background
             
             clockBackground
             
@@ -33,72 +33,32 @@ struct SampleView: View {
 
 extension SampleView {
     /// Platinum metallic background
-    private var metallicBackground: some View {
-        Metallic.platinum.linearGradient
+    private var background: some View {
+        LinearGradient(colors: [.white.opacity(0.7), .clear], startPoint: .topLeading, endPoint: .bottomLeading)
             .blur(radius: 16)
             .opacity(0.5)
-            .background(
-                LinearGradient(
-                    colors: [Metallic.silver.colors[0].opacity(0.7), .black],
-                    startPoint: .topLeading, endPoint: .bottomTrailing)
-            )
+            .background(.black)
             .ignoresSafeArea()
     }
     /// Clock background with shadows
     private var clockBackground: some View {
         Circle()
-            .fill(Metallic.silver.linearGradient.opacity(0.3))
+            .fill(
+                LinearGradient(colors: [.secondary, .clear], startPoint: .topLeading, endPoint: .bottomTrailing)
+                    .opacity(0.7)
+            )
             .background(.black)
-            .blur(radius: 4)
             .frame(maxWidth: self.clockSize)
             .clipShape(Circle())
-            .shadow(color: .black, radius: 4, x: 4, y: 4)
-            .shadow(color: .secondary.opacity(0.5), radius: 2, x: -2, y: -2)
+            .shadow(color: .black, radius: 2, x: 0, y: 0)
+            .shadow(color: .black, radius: 4, x: 10, y: 10)
+            .shadow(color: .secondary.opacity(0.3), radius: 8, x: -6, y: -6)
     }
 }
 
 struct SampleView_Previews: PreviewProvider {
     static var previews: some View {
         SampleView()
-            //.environmentObject(ClockManager())
             .preferredColorScheme(.dark)
-    }
-}
-
-// Metallic gradients
-enum Metallic {
-    
-    case gold, silver, platinum, bronze
-    
-    var colors: [Color] {
-        switch self {
-        case .gold: return [
-            Color("gold1"), Color("gold2"), Color("gold3"),
-            Color("gold3"), Color("gold4"), Color("gold1"),
-        ]
-            
-        case .silver: return [
-            Color("silver1"), Color("silver2"), Color("silver3"),
-            Color("silver4"), Color("silver3"), Color("silver5"),
-        ]
-        
-        case .platinum: return [
-            Color("platinum1"), Color("platinum2"), Color("platinum1"),
-            Color("platinum2"), Color("platinum3"), Color("platinum1"),
-        ]
-        
-        case .bronze: return [
-            Color("bronze1"), Color("bronze2"), Color("bronze3"),
-            Color("bronze4"), Color("bronze1"), Color("bronze3"),
-        ]}
-        
-    }
-    
-    var linearGradient: LinearGradient {
-        return LinearGradient(
-            gradient: Gradient(colors: self.colors),
-            startPoint: .topLeading,
-            endPoint: .bottomTrailing
-        )
     }
 }
