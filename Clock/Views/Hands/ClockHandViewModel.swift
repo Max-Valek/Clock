@@ -1,5 +1,5 @@
 //
-//  HandViewModel.swift
+//  ClockHandViewModel.swift
 //  Clock
 //
 //  Created by Max Valek on 9/8/23.
@@ -7,41 +7,45 @@
 
 import SwiftUI
 
-extension HandView {
+extension ClockHand {
     
     final class ViewModel: ClockObserver {
         
         @Published var size: CGSize = .zero
         
         let type: HandType
-        
-        let overlapMultiplier: CGFloat = 0.25       /// Percentage of the hand length to add as overlap.
+        let overlapMultiplier: CGFloat = 0.15       /// Percentage of the hand length to add as overlap.
         
         init(type: HandType, clockManager: ClockManager) {
             self.type = type
             super.init(clockManager: clockManager)
         }
         
-        /// Starting point for the hand. Center of the clock offset by amount to overlap.
-        func startingPoint() -> CGPoint {
-            let center = CGPoint(x: size.width / 2, y: size.height / 2)
-            let mid = totalLength() / 2
-            let amountToOffset = mid - overlapAmount()
-            return CGPoint(x: center.x, y: center.y - amountToOffset)
-        }
-
-        /// Length of hand with added amount for overlap.
-        func totalLength() -> CGFloat {
+        /// Hand length from its scale factor and the additional amount (on other side of anchor) for overlap.
+        var totalLength: CGFloat {
             lengthFromCenter() + overlapAmount()
         }
         
+        /// Point to rotate around.
+        var anchorPoint: CGPoint {
+            let center = CGPoint(x: size.width / 2, y: size.height / 2)
+            let middle = totalLength / 2
+            let amountToOffset = middle - overlapAmount()
+            return CGPoint(x: center.x, y: center.y - amountToOffset)
+        }
+        
+        /// Rotation angle based on hand type and time.
+        var rotation: Angle {
+            type.rotationAngle(for: time)
+        }
+        
         /// Amount to add past the center for overlapping.
-        func overlapAmount() -> CGFloat {
+        private func overlapAmount() -> CGFloat {
             lengthFromCenter() * overlapMultiplier
         }
         
         /// Length of hand from center of the clock.
-        func lengthFromCenter() -> CGFloat {
+        private func lengthFromCenter() -> CGFloat {
             let radius = min(size.width, size.height) / 2
             return self.type.lengthMultiplier * radius
         }

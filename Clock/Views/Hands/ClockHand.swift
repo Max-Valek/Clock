@@ -1,5 +1,5 @@
 //
-//  HandView.swift
+//  ClockHand.swift
 //  Clock
 //
 //  Created by Max Valek on 9/8/23.
@@ -8,7 +8,7 @@
 import SwiftUI
 
 /// View representing a hand on the clock, rotated based on time.
-struct HandView: View {
+struct ClockHand: View {
     
     @StateObject private var vm: ViewModel
     
@@ -20,9 +20,9 @@ struct HandView: View {
         GeometryReader { proxy in
             Capsule()
                 .fill(vm.type.color)
-                .frame(width: vm.type.thickness, height: vm.totalLength())
-                .position(vm.startingPoint())
-                .rotationEffect(vm.type.rotationAngle(for: vm.time))
+                .frame(width: vm.type.thickness, height: vm.totalLength)
+                .position(vm.anchorPoint)
+                .rotationEffect(vm.rotation)
                 .onAppear { vm.size = proxy.size }
         }
     }

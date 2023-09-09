@@ -9,7 +9,6 @@ import Foundation
 
 /// Represents the current time for the clock.
 struct ClockTime {
-    
     let hours: Int
     let minutes: Int
     let seconds: Int

@@ -11,14 +11,14 @@ import Combine
 /// View for a basic clock with hours, minutes, and seconds hands along with a marker for each hour.
 struct ClockView: View {
     
-    @StateObject var clockManager = ClockManager()
+    @StateObject private var clockManager = ClockManager()
     
     var body: some View {
         ZStack {
             HourIndicators(clock: clockManager)
             
             ForEach(HandType.allCases, id: \.self) { hand in
-                HandView(type: hand, clock: clockManager)
+                ClockHand(type: hand, clock: clockManager)
             }
         }
         .padding()

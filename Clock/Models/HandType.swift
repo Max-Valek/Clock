@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// Protocol for a resizable and rotatable clock hand.
 protocol ScalableHand: Hashable {
     var color: Color { get }
     var thickness: CGFloat { get }
@@ -29,9 +30,9 @@ enum HandType: ScalableHand, CaseIterable {
     /// Thickness of the different hands.
     var thickness: CGFloat {
         switch self {
-        case .hour: return 10
+        case .hour: return 8
         case .second: return 2
-        case .minute: return 5
+        case .minute: return 4
         }
     }
     
