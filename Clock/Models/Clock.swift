@@ -88,11 +88,11 @@ enum ClockHandType: Int, CaseIterable {
     var configuration: ClockHandConfiguration {
         switch self {
         case .hour:
-            return ClockHandConfiguration(color: .primary, lengthScale: 0.65, thickness: 10)
+            return ClockHandConfiguration(color: .secondary, lengthScale: 0.65, thickness: 6)
         case .minute:
-            return ClockHandConfiguration(color: .primary, lengthScale: 0.85, thickness: 5)
+            return ClockHandConfiguration(color: .secondary, lengthScale: 0.85, thickness: 3)
         case .second:
-            return ClockHandConfiguration(color: .red, lengthScale: 0.85, thickness: 3)
+            return ClockHandConfiguration(color: .purple, lengthScale: 0.85, thickness: 1)
         }
     }
     

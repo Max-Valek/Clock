@@ -55,8 +55,8 @@ struct AnalogClock_Previews: PreviewProvider {
             secondaryColor: .red
         ) {
             Circle()
-                .fill(.red)
-                .frame(width: 20)
+                .fill(.primary)
+                .frame(width: 16)
         }
         .preferredColorScheme(.dark)
     }

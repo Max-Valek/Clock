@@ -20,13 +20,17 @@ struct ClockHands: View {
     var body: some View {
         
         ZStack {
-            backgroundGradient(start: .degrees(0), end: vm.secondsRotationAngle, color: .red)
-                .opacity(0.25)
             
-            backgroundGradient(start: .degrees(0), end: vm.minuteRotationAngle, color: .primary)
+            backgroundGradient(end: vm.hourRotationAngle - .degrees(360), colors: [.secondary])
+                //.opacity(0.7)
+            
+            backgroundGradient(end: vm.minuteRotationAngle, colors: [.clear, .orange])
                 .opacity(0.5)
             
-            backgroundGradient(start: .degrees(0), end: vm.hourRotationAngle - .degrees(360), color: .green)
+            backgroundGradient(end: vm.secondsRotationAngle, colors: [.clear, .purple])
+                .opacity(0.35)
+            
+            Circle().fill(.ultraThinMaterial.opacity(0.7))
             
             ForEach(vm.hands, id: \.rawValue) { hand in
                 HandView(type: hand, clock: clock)
@@ -34,7 +38,7 @@ struct ClockHands: View {
         }
     }
     
-    func backgroundGradient(start: Angle, end: Angle, color: Color) -> some View {
+    func backgroundGradient(end: Angle, colors: [Color]) -> some View {
         Circle()
             .fill(.clear)
             .background {
@@ -43,7 +47,7 @@ struct ClockHands: View {
                         path.move(to: vm.center(of: proxy))
                         path.addArc(center: vm.center(of: proxy),
                                     radius: vm.radius(of: proxy),
-                                    startAngle: start,
+                                    startAngle: vm.startAngle,
                                     endAngle: end,
                                     clockwise: false
                         )
@@ -51,9 +55,9 @@ struct ClockHands: View {
                     }
                     .fill(
                         AngularGradient(
-                            colors: [.clear, color],
+                            colors: colors,
                             center: .center,
-                            startAngle: start,
+                            startAngle: vm.startAngle,
                             endAngle: end)
                     )
                     .rotationEffect(.degrees(-90))

@@ -16,6 +16,8 @@ final class ClockHandsViewModel: ClockObserver {
         super.init(clockManager: clockManager)
     }
     
+    var startAngle: Angle { .degrees(0) }
+    
     var hourRotationAngle: Angle {
         if let index = hands.firstIndex(of: .hour) {
             let angle = hands[index].rotation(for: time)

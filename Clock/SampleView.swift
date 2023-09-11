@@ -20,8 +20,8 @@ struct SampleView: View {
             
             AnalogClock(hands: [.hour, .minute, .second], mode: .hoursOnly) {
                 Circle()
-                    .fill(.red)
-                    .frame(maxWidth: 20)
+                    .fill(.primary)
+                    .frame(maxWidth: 16)
                     .shadow(color: .black, radius: 4)
             }
             .frame(maxWidth: self.clockSize)
