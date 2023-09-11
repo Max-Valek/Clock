@@ -31,16 +31,16 @@ final class HandViewModel: ClockObserver {
     
     var dynamicThickness: CGFloat {
         switch radius {
-        case 0...100: return type.smallThicknessScale
-        case 101...200: return type.mediumThicknessScale
-        case 201...: return type.largeThicknessScale
+        case 0...100: return type.smallWidth
+        case 101...200: return type.mediumWidth
+        case 201...: return type.largeWidth
         default: return 0
         }
     }
     
-    var thickness: CGFloat { type.configuration.thickness }
+    //var thickness: CGFloat { type.configuration.thickness }
 
-    var length: CGFloat { type.configuration.lengthScale * radius }
+    var length: CGFloat { type.lengthScale * radius }
 
     var anchorPoint: CGPoint { return CGPoint(x: radius, y: radius - (length / 2)) }
 

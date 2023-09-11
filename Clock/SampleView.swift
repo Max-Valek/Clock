@@ -10,7 +10,7 @@ import SwiftUI
 /// Sample implementation of the Clock component.
 struct SampleView: View {
     
-    private let clockSize: CGFloat = 300
+    private let clockSize: CGFloat = 150
     
     var body: some View {
         ZStack {
@@ -21,7 +21,7 @@ struct SampleView: View {
             AnalogClock(hands: [.hour, .minute, .second], mode: .hoursOnly) {
                 Circle()
                     .fill(.purple)
-                    .frame(maxWidth: 12)
+                    .frame(maxWidth: 8)
                     .shadow(color: .black, radius: 4)
             }
             .frame(maxWidth: self.clockSize)

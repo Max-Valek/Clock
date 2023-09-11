@@ -61,7 +61,5 @@ struct ClockHands: View {
                     .rotationEffect(.degrees(-90))
                 }
             }
-            //.overlay(Circle().fill(.ultraThinMaterial.opacity(0.4)))
-            .opacity(end == .degrees(0) ? 0 : 1)
     }
 }

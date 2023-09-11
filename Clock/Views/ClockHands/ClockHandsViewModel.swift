@@ -49,6 +49,10 @@ final class ClockHandsViewModel: ClockObserver {
         return .degrees(0)
     }
     
+    var anchorColor: Color { clock.secondColor }
+    
+    var anchorWidth: CGFloat { 0 }
+    
     func center(of proxy: GeometryProxy) -> CGPoint {
         CGPoint(x: proxy.size.width / 2, y: proxy.size.height / 2)
     }

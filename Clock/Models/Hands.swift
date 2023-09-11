@@ -26,15 +26,15 @@ enum ClockHandType: Int, CaseIterable {
         }
     }
     
-    var largeThicknessScale: CGFloat {
+    var largeWidth: CGFloat {
         switch self {
-        case .hour: return 6
-        case .minute: return 3
+        case .hour: return 8
+        case .minute: return 4
         case .second: return 1
         }
     }
     
-    var mediumThicknessScale: CGFloat {
+    var mediumWidth: CGFloat {
         switch self {
         case .hour: return 4
         case .minute: return 2
@@ -42,22 +42,11 @@ enum ClockHandType: Int, CaseIterable {
         }
     }
     
-    var smallThicknessScale: CGFloat {
+    var smallWidth: CGFloat {
         switch self {
         case .hour: return 3
         case .minute: return 2
         case .second: return 1
-        }
-    }
-    
-    var configuration: ClockHandConfiguration {
-        switch self {
-        case .hour:
-            return ClockHandConfiguration(lengthScale: 0.65, thickness: 4)
-        case .minute:
-            return ClockHandConfiguration(lengthScale: 0.85, thickness: 2)
-        case .second:
-            return ClockHandConfiguration(lengthScale: 0.85, thickness: 1)
         }
     }
 
