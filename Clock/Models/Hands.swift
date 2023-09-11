@@ -21,8 +21,8 @@ enum ClockHandType: Int, CaseIterable {
     
     var lengthScale: CGFloat {
         switch self {
-        case .hour: return 0.65
-        default: return 0.85
+        case .hour: return 0.6
+        default: return 0.8
         }
     }
     

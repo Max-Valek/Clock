@@ -19,6 +19,8 @@ class ClockManager: ObservableObject {
     
     let clock: Clock
     
+    @Published var size: CGSize = .zero
+    
     init(clock: Clock) {
         self.clock = clock
         self.time = clock.time

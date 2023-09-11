@@ -50,18 +50,35 @@ struct AnalogClock<HandAnchor: View>: View {
     }
     
     var body: some View {
-        ZStack {
-            HourIndicators(clock: clockManager)
-            
-            ClockHands(clock: clockManager)
-            
-            anchor
+        GeometryReader { geometry in
+            ZStack {
+                HourIndicators(clock: clockManager)
+                
+                ClockHands(clock: clockManager)
+                
+                anchor
+            }
+            .background(Circle().fill(.ultraThickMaterial))
+            .aspectRatio(1, contentMode: .fit)
+            .onAppear {
+                clockManager.size = geometry.size
+                clockManager.subscribe()
+            }
+            .onDisappear { clockManager.unsubscribe() }
         }
-        .background(Circle().fill(.ultraThickMaterial))
-        .padding()
-        .aspectRatio(1, contentMode: .fit)
-        .onAppear { clockManager.subscribe() }
-        .onDisappear { clockManager.unsubscribe() }
+        
+//        ZStack {
+//            HourIndicators(clock: clockManager)
+//
+//            ClockHands(clock: clockManager)
+//
+//            anchor
+//        }
+//        .background(Circle().fill(.ultraThickMaterial))
+//        .padding()
+//        .aspectRatio(1, contentMode: .fit)
+//        .onAppear { clockManager.subscribe() }
+//        .onDisappear { clockManager.unsubscribe() }
     }
 }
 

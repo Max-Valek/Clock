@@ -13,18 +13,29 @@ class ClockObserver: ObservableObject {
     
     @Published var time: ClockTime
     
+    @Published var size: CGSize = .zero
+    
     let clock: Clock
     
-    private var cancellable: AnyCancellable?
+    //private var cancellable: AnyCancellable?
 
+    private var cancellables = Set<AnyCancellable>()
+    
     init(clockManager: ClockManager) {
         self.time = clockManager.time
         self.clock = clockManager.clock
 
         // Subscribe to changes in the ClockManager's time
-        cancellable = clockManager.$time
+        clockManager.$time
             .sink { [weak self] newTime in
                 self?.time = newTime
             }
+            .store(in: &cancellables)
+        
+        clockManager.$size
+            .sink { [weak self] newSize in
+                self?.size = newSize
+            }
+            .store(in: &cancellables)
     }
 }

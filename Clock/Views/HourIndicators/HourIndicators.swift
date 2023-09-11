@@ -17,20 +17,33 @@ struct HourIndicators: View {
     }
     
     var body: some View {
-        GeometryReader { proxy in
-            ForEach(0..<60) { second in
-                Path { path in
-                    path.move(to: vm.topCenter)
-                    path.addLine(to: vm.indicatorEnd(for: second))
-                }
-                .stroke(
-                    vm.color(for: second),
-                    lineWidth: vm.width(for: second)
-                )
-                .rotationEffect(vm.rotation(for: second))
+        
+        ForEach(0..<60) { second in
+            Path { path in
+                path.move(to: vm.topCenter)
+                path.addLine(to: vm.indicatorEnd(for: second))
             }
-            .onAppear { vm.size = proxy.size }
+            .stroke(
+                vm.color(for: second),
+                lineWidth: vm.width(for: second)
+            )
+            .rotationEffect(vm.rotation(for: second))
         }
+        
+//        GeometryReader { proxy in
+//            ForEach(0..<60) { second in
+//                Path { path in
+//                    path.move(to: vm.topCenter)
+//                    path.addLine(to: vm.indicatorEnd(for: second))
+//                }
+//                .stroke(
+//                    vm.color(for: second),
+//                    lineWidth: vm.width(for: second)
+//                )
+//                .rotationEffect(vm.rotation(for: second))
+//            }
+//            .onAppear { vm.size = proxy.size }
+//        }
     }
 }
 

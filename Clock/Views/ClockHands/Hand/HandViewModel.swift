@@ -9,7 +9,7 @@ import SwiftUI
 
 final class HandViewModel: ClockObserver {
     
-    @Published var size: CGSize = .zero
+    //@Published var size: CGSize = .zero
     //let clock: Clock
     let type: ClockHandType
     

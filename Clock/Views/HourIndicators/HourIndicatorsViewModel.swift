@@ -12,7 +12,7 @@ extension HourIndicators {
     
     final class ViewModel: ClockObserver {
 
-        @Published var size: CGSize = .zero
+        //@Published var size: CGSize = .zero
         //let clock: Clock
         let indicators: Indicators
         let indicatorCount: Int
