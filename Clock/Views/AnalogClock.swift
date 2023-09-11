@@ -9,34 +9,15 @@ import SwiftUI
 import Combine
 
 /// View for a basic clock with hours, minutes, and seconds hands along with a marker for each hour.
-struct AnalogClock<HandAnchor: View>: View {
+struct AnalogClock: View {
     
     @StateObject private var clockManager: ClockManager
-    
-    let anchor: HandAnchor
-    
-    //    init(hands: [ClockHandType] = [.hour, .minute, .second],
-    //         mode: IndicatorMode = .hoursOnly,
-    //         primaryColor: Color = .primary,
-    //         secondaryColor: Color = .red,
-    //         anchor: @escaping () -> HandAnchor
-    //    ) {
-    //        let clock = Clock(
-    //            hands: hands,
-    //            indicatorMode: mode,
-    //            primaryColor: primaryColor,
-    //            secondaryColor: secondaryColor
-    //        )
-    //        _clockManager = StateObject(wrappedValue: ClockManager(clock: clock))
-    //        self.anchor = anchor()
-    //    }
     
     init(hands: [ClockHandType] = [.hour, .minute, .second],
          mode: IndicatorMode = .hoursOnly,
          hourColor: Color = .primary,
          minuteColor: Color = .orange,
-         secondColor: Color = .purple,
-         anchor: @escaping () -> HandAnchor
+         secondColor: Color = .purple
     ) {
         let clock = Clock(
             hands: hands,
@@ -46,7 +27,6 @@ struct AnalogClock<HandAnchor: View>: View {
             secondColor: secondColor
         )
         _clockManager = StateObject(wrappedValue: ClockManager(clock: clock))
-        self.anchor = anchor()
     }
     
     var body: some View {
@@ -56,7 +36,9 @@ struct AnalogClock<HandAnchor: View>: View {
                 
                 ClockHands(clock: clockManager)
                 
-                anchor
+                Circle()
+                    .fill(clockManager.clock.hourColor)
+                    .frame(width: 12)
             }
             .background(Circle().fill(.ultraThickMaterial))
             //.clipped()
@@ -68,19 +50,6 @@ struct AnalogClock<HandAnchor: View>: View {
             }
             .onDisappear { clockManager.unsubscribe() }
         }
-        
-//        ZStack {
-//            HourIndicators(clock: clockManager)
-//
-//            ClockHands(clock: clockManager)
-//
-//            anchor
-//        }
-//        .background(Circle().fill(.ultraThickMaterial))
-//        .padding()
-//        .aspectRatio(1, contentMode: .fit)
-//        .onAppear { clockManager.subscribe() }
-//        .onDisappear { clockManager.unsubscribe() }
     }
 }
 
@@ -91,12 +60,8 @@ struct AnalogClock_Previews: PreviewProvider {
             mode: .all,
             hourColor: .primary,
             minuteColor: .orange,
-            secondColor: .purple) {
-                Circle()
-                    .fill(.purple)
-                    .frame(width: 12)
-            }
-        
-            .preferredColorScheme(.dark)
+            secondColor: .purple
+        )
+        .preferredColorScheme(.dark)
     }
 }

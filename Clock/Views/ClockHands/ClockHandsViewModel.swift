@@ -10,10 +10,8 @@ import SwiftUI
 final class ClockHandsViewModel: ClockObserver {
     
     @Published var hands: [ClockHandType] = []
-    //let clock: Clock
     
     override init(clockManager: ClockManager) {
-        //self.clock = clockManager.clock
         self.hands = Array(Set(clockManager.clock.hands))
         super.init(clockManager: clockManager)
     }
@@ -24,7 +22,6 @@ final class ClockHandsViewModel: ClockObserver {
         if let index = hands.firstIndex(of: .hour) {
             let angle = hands[index].rotation(for: time)
             return time.hours > 0 ? angle : angle - .degrees(360)
-            //return angle == .degrees(0) ? .degrees(0) : angle
         }
         
         return .degrees(0)
@@ -52,15 +49,7 @@ final class ClockHandsViewModel: ClockObserver {
     var anchorColor: Color { clock.secondColor }
     
     var anchorWidth: CGFloat { 0 }
-    
-    func center(of proxy: GeometryProxy) -> CGPoint {
-        CGPoint(x: proxy.size.width / 2, y: proxy.size.height / 2)
-    }
-    
-    func radius(of proxy: GeometryProxy) -> CGFloat {
-        min(proxy.size.width, proxy.size.height) / 2.0
-    }
-    
+
     func gradientColors(for hand: ClockHandType) -> [Color] {
         switch hand {
         case .hour: return [.clear, clock.hourColor.opacity(0.25)]

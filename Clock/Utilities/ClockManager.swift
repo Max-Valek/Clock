@@ -8,10 +8,6 @@
 import SwiftUI
 import Combine
 
-struct ClockStyle {
-    
-}
-
 class ClockManager: ObservableObject {
     
     @Published var time: ClockTime

@@ -12,20 +12,27 @@ import Combine
 class ClockObserver: ObservableObject {
     
     @Published var time: ClockTime
-    
     @Published var size: CGSize = .zero
-    
     let clock: Clock
     
-    //private var cancellable: AnyCancellable?
-
+    let clockManager: ClockManager
     private var cancellables = Set<AnyCancellable>()
     
     init(clockManager: ClockManager) {
+        self.clockManager = clockManager
         self.time = clockManager.time
         self.clock = clockManager.clock
 
-        // Subscribe to changes in the ClockManager's time
+        addSubscribers()
+    }
+    
+    /// Keep track of the frame size.
+    var center: CGPoint { CGPoint(x: radius, y: radius) }
+    var radius: CGFloat { min(size.width, size.height) / 2 }
+    
+    /// Subscribe to changes in the ClockManager's published properties.
+    func addSubscribers() {
+        
         clockManager.$time
             .sink { [weak self] newTime in
                 self?.time = newTime

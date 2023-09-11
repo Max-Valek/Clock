@@ -40,26 +40,24 @@ struct ClockHands: View {
         Circle()
             .fill(.clear)
             .background {
-                GeometryReader { proxy in
-                    Path { path in
-                        path.move(to: vm.center(of: proxy))
-                        path.addArc(center: vm.center(of: proxy),
-                                    radius: vm.radius(of: proxy),
-                                    startAngle: vm.startAngle,
-                                    endAngle: end,
-                                    clockwise: false
-                        )
-                        path.closeSubpath()
-                    }
-                    .fill(
-                        AngularGradient(
-                            colors: colors,
-                            center: .center,
-                            startAngle: vm.startAngle,
-                            endAngle: end)
+                Path { path in
+                    path.move(to: vm.center)
+                    path.addArc(center: vm.center,
+                                radius: vm.radius,
+                                startAngle: vm.startAngle,
+                                endAngle: end,
+                                clockwise: false
                     )
-                    .rotationEffect(.degrees(-90))
+                    path.closeSubpath()
                 }
+                .fill(
+                    AngularGradient(
+                        colors: colors,
+                        center: .center,
+                        startAngle: vm.startAngle,
+                        endAngle: end)
+                )
+                .rotationEffect(.degrees(-90))
             }
     }
 }

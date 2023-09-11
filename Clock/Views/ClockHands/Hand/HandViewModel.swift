@@ -9,18 +9,13 @@ import SwiftUI
 
 final class HandViewModel: ClockObserver {
     
-    //@Published var size: CGSize = .zero
-    //let clock: Clock
     let type: ClockHandType
     
     init(type: ClockHandType, clockManager: ClockManager) {
-       // self.clock = clockManager.clock
         self.type = type
         super.init(clockManager: clockManager)
     }
     
-    //var color: Color { type.configuration.color }
-
     var color: Color {
         switch type {
         case .hour: return clock.hourColor
@@ -38,13 +33,9 @@ final class HandViewModel: ClockObserver {
         }
     }
     
-    //var thickness: CGFloat { type.configuration.thickness }
-
     var length: CGFloat { type.lengthScale * radius }
 
     var anchorPoint: CGPoint { return CGPoint(x: radius, y: radius - (length / 2)) }
 
     var rotation: Angle { type.rotation(for: time) }
-
-    private var radius: CGFloat { min(size.width, size.height) / 2 }
 }
