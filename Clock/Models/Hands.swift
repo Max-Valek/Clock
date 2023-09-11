@@ -7,17 +7,11 @@
 
 import SwiftUI
 
-struct ClockHandConfiguration {
-    let lengthScale: CGFloat
-    let thickness: CGFloat
-}
 
 enum ClockHandType: Int, CaseIterable {
     case hour
     case minute
     case second
-    
-    static var thicknessScale: CGFloat = 0.015
     
     var lengthScale: CGFloat {
         switch self {

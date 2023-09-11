@@ -18,7 +18,7 @@ struct HandView: View {
     var body: some View {
         Capsule()
             .fill(vm.color)
-            .frame(width: vm.dynamicThickness, height: vm.length)
+            .frame(width: vm.thickness, height: vm.length)
             .position(vm.anchorPoint)
             .rotationEffect(vm.rotation)
     }

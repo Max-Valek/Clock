@@ -24,10 +24,7 @@ extension HourIndicators {
         var topCenter: CGPoint { CGPoint(x: radius, y: 0) }
         
         func indicatorEnd(for index: Int) -> CGPoint {
-            CGPoint(
-                x: radius,
-                y: height(for: index) * self.size.height
-            )
+            CGPoint(x: radius, y: height(for: index) * self.size.height)
         }
         
         func width(for index: Int) -> CGFloat { indicators.width(for: index) }
@@ -42,13 +39,9 @@ extension HourIndicators {
             return clock.hourColor.opacity(indicators.isHour(index) ? 0.5 : 0.25)
         }
         
-        private func isCurrentSecond(_ index: Int) -> Bool {
-            time.seconds == index
-        }
+        private func isCurrentSecond(_ index: Int) -> Bool { time.seconds == index }
         
-        private func isCurrentMinute(_ index: Int) -> Bool {
-            time.minutes == index
-        }
+        private func isCurrentMinute(_ index: Int) -> Bool { time.minutes == index }
     }
 }
 

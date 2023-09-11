@@ -19,9 +19,9 @@ struct SampleView: View {
             clockBackground
             
             AnalogClock(hands: [.hour, .minute, .second], mode: .all)
-            .padding(2)
-            .background(clockBackground)
-            .frame(maxWidth: self.clockSize)
+                .padding(2)
+                .background(clockBackground)
+                .frame(maxWidth: self.clockSize)
             
         }
         .frame(maxWidth: .infinity)

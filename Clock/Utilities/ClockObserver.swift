@@ -29,6 +29,13 @@ class ClockObserver: ObservableObject {
     /// Keep track of the frame size.
     var center: CGPoint { CGPoint(x: radius, y: radius) }
     var radius: CGFloat { min(size.width, size.height) / 2 }
+    var sizeMode: ClockSize {
+        switch radius {
+        case ...100: return .small
+        case 101...200: return .medium
+        default: return .large
+        }
+    }
     
     /// Subscribe to changes in the ClockManager's published properties.
     func addSubscribers() {

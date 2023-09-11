@@ -35,13 +35,8 @@ struct AnalogClock: View {
                 HourIndicators(clock: clockManager)
                 
                 ClockHands(clock: clockManager)
-                
-                Circle()
-                    .fill(clockManager.clock.hourColor)
-                    .frame(width: 12)
             }
             .background(Circle().fill(.ultraThickMaterial))
-            //.clipped()
             .aspectRatio(1, contentMode: .fit)
             .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
             .onAppear {

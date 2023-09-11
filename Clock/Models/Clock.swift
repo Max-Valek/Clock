@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+enum ClockSize {
+    case small, medium, large
+}
+
 struct Clock {
     let time: ClockTime
     let hands: [ClockHandType]

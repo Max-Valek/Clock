@@ -33,6 +33,10 @@ struct ClockHands: View {
             ForEach(vm.hands, id: \.rawValue) { hand in
                 HandView(type: hand, clock: clock)
             }
+            
+            Circle()
+                .fill(vm.clock.hourColor)
+                .frame(width: ClockHandType.hour.largeWidth * 2)
         }
     }
     

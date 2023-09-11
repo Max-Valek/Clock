@@ -12,7 +12,6 @@
 		9D01F0442AACFC4200184C1B /* Indicators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D01F0432AACFC4200184C1B /* Indicators.swift */; };
 		9D01F0472AAD152F00184C1B /* ClockHands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D01F0462AAD152F00184C1B /* ClockHands.swift */; };
 		9D01F0492AAD155C00184C1B /* ClockHandsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D01F0482AAD155C00184C1B /* ClockHandsViewModel.swift */; };
-		9D01F04B2AAD371800184C1B /* TrialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D01F04A2AAD371800184C1B /* TrialView.swift */; };
 		9D565E8F2AAB7EA00004F40F /* ClockApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D565E8E2AAB7EA00004F40F /* ClockApp.swift */; };
 		9D565E912AAB7EA00004F40F /* SampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D565E902AAB7EA00004F40F /* SampleView.swift */; };
 		9D565E932AAB7EA10004F40F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D565E922AAB7EA10004F40F /* Assets.xcassets */; };
@@ -32,7 +31,6 @@
 		9D01F0432AACFC4200184C1B /* Indicators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indicators.swift; sourceTree = "<group>"; };
 		9D01F0462AAD152F00184C1B /* ClockHands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockHands.swift; sourceTree = "<group>"; };
 		9D01F0482AAD155C00184C1B /* ClockHandsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockHandsViewModel.swift; sourceTree = "<group>"; };
-		9D01F04A2AAD371800184C1B /* TrialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialView.swift; sourceTree = "<group>"; };
 		9D565E8B2AAB7EA00004F40F /* Clock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D565E8E2AAB7EA00004F40F /* ClockApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockApp.swift; sourceTree = "<group>"; };
 		9D565E902AAB7EA00004F40F /* SampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleView.swift; sourceTree = "<group>"; };
@@ -88,7 +86,6 @@
 			children = (
 				9D565E8E2AAB7EA00004F40F /* ClockApp.swift */,
 				9D565E902AAB7EA00004F40F /* SampleView.swift */,
-				9D01F04A2AAD371800184C1B /* TrialView.swift */,
 				9D565E9C2AAB7F7D0004F40F /* Models */,
 				9D955C7F2AABE65B002680AD /* Utilities */,
 				9D565E9D2AAB7F830004F40F /* Views */,
@@ -238,7 +235,6 @@
 				9D565E8F2AAB7EA00004F40F /* ClockApp.swift in Sources */,
 				9D01F0492AAD155C00184C1B /* ClockHandsViewModel.swift in Sources */,
 				9D955C882AABF7E1002680AD /* HourIndicatorsViewModel.swift in Sources */,
-				9D01F04B2AAD371800184C1B /* TrialView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

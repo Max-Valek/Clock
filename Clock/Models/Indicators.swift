@@ -13,8 +13,9 @@ enum IndicatorMode {
 
 struct Indicators {
     let mode: IndicatorMode
-    static let hourScale: CGFloat = 0.00005
-    static let minuteScale: CGFloat = 0.000025
+    
+    let largeScale: CGFloat = 0.00005
+    let smallScale: CGFloat = 0.000025
     
     init(mode: IndicatorMode) {
         self.mode = mode
@@ -30,7 +31,7 @@ struct Indicators {
         return isHour(index) ? 2 : 1
     }
     
-    func height(for index: Int) -> CGFloat { isHour(index) ? Self.hourScale : Self.minuteScale }
+    func height(for index: Int) -> CGFloat { isHour(index) ? largeScale : smallScale }
     
     func rotation(for index: Int) -> Angle {
         Angle(degrees: mode == .none ? 0 : Double(index) * 360 / Double(count))
