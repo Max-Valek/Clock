@@ -7,23 +7,51 @@
 
 import SwiftUI
 
+//struct Clock {
+//    let time: ClockTime
+//    let hands: [ClockHandType]
+//    let indicatorMode: IndicatorMode
+//    let primaryColor: Color
+//    let secondaryColor: Color
+//
+//    let hourColor: Color
+//    let minuteColor: Color
+//    let secondColor: Color
+//
+//    init(hands: [ClockHandType],
+//         indicatorMode: IndicatorMode,
+//         primaryColor: Color,
+//         secondaryColor: Color
+//    ) {
+//        self.time = ClockTime(date: Date())
+//        self.hands = hands
+//        self.indicatorMode = indicatorMode
+//        self.primaryColor = primaryColor
+//        self.secondaryColor = secondaryColor
+//    }
+//}
+
 struct Clock {
     let time: ClockTime
     let hands: [ClockHandType]
     let indicatorMode: IndicatorMode
-    let primaryColor: Color
-    let secondaryColor: Color
+    
+    let hourColor: Color
+    let minuteColor: Color
+    let secondColor: Color
     
     init(hands: [ClockHandType],
          indicatorMode: IndicatorMode,
-         primaryColor: Color,
-         secondaryColor: Color
+         hourColor: Color,
+         minuteColor: Color,
+         secondColor: Color
     ) {
         self.time = ClockTime(date: Date())
         self.hands = hands
         self.indicatorMode = indicatorMode
-        self.primaryColor = primaryColor
-        self.secondaryColor = secondaryColor
+        self.hourColor = hourColor
+        self.minuteColor = minuteColor
+        self.secondColor = secondColor
     }
 }
 
@@ -64,7 +92,7 @@ struct Indicators {
     func width(for index: Int) -> CGFloat {
         guard mode != .none else { return 0 }
         if mode == .hoursOnly && !isHour(index) { return 0 }
-        return isHour(index) ? 3 : 2
+        return isHour(index) ? 2 : 1
     }
     
     func height(for index: Int) -> CGFloat { isHour(index) ? Self.hourScale : Self.minuteScale }
@@ -84,7 +112,7 @@ enum ClockHandType: Int, CaseIterable {
     case hour
     case minute
     case second
-
+    
     var configuration: ClockHandConfiguration {
         switch self {
         case .hour:

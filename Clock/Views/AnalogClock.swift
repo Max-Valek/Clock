@@ -15,17 +15,35 @@ struct AnalogClock<HandAnchor: View>: View {
     
     let anchor: HandAnchor
     
+    //    init(hands: [ClockHandType] = [.hour, .minute, .second],
+    //         mode: IndicatorMode = .hoursOnly,
+    //         primaryColor: Color = .primary,
+    //         secondaryColor: Color = .red,
+    //         anchor: @escaping () -> HandAnchor
+    //    ) {
+    //        let clock = Clock(
+    //            hands: hands,
+    //            indicatorMode: mode,
+    //            primaryColor: primaryColor,
+    //            secondaryColor: secondaryColor
+    //        )
+    //        _clockManager = StateObject(wrappedValue: ClockManager(clock: clock))
+    //        self.anchor = anchor()
+    //    }
+    
     init(hands: [ClockHandType] = [.hour, .minute, .second],
          mode: IndicatorMode = .hoursOnly,
-         primaryColor: Color = .primary,
-         secondaryColor: Color = .red,
+         hourColor: Color = .primary,
+         minuteColor: Color = .orange,
+         secondColor: Color = .purple,
          anchor: @escaping () -> HandAnchor
     ) {
         let clock = Clock(
             hands: hands,
             indicatorMode: mode,
-            primaryColor: primaryColor,
-            secondaryColor: secondaryColor
+            hourColor: hourColor,
+            minuteColor: minuteColor,
+            secondColor: secondColor
         )
         _clockManager = StateObject(wrappedValue: ClockManager(clock: clock))
         self.anchor = anchor()
@@ -39,6 +57,7 @@ struct AnalogClock<HandAnchor: View>: View {
             
             anchor
         }
+        .background(Circle().fill(.ultraThickMaterial))
         .padding()
         .aspectRatio(1, contentMode: .fit)
         .onAppear { clockManager.subscribe() }
@@ -51,13 +70,14 @@ struct AnalogClock_Previews: PreviewProvider {
         AnalogClock(
             hands: [.hour, .minute, .second],
             mode: .hoursOnly,
-            primaryColor: .primary,
-            secondaryColor: .red
-        ) {
-            Circle()
-                .fill(.primary)
-                .frame(width: 16)
-        }
-        .preferredColorScheme(.dark)
+            hourColor: .primary,
+            minuteColor: .orange,
+            secondColor: .purple) {
+                Circle()
+                    .fill(.purple)
+                    .frame(width: 12)
+            }
+        
+            .preferredColorScheme(.dark)
     }
 }

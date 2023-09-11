@@ -21,16 +21,14 @@ struct ClockHands: View {
         
         ZStack {
             
-            backgroundGradient(end: vm.hourRotationAngle - .degrees(360), colors: [.secondary])
+            backgroundGradient(end: vm.hourRotationAngle, colors: vm.gradientColors(for: .hour))
                 //.opacity(0.7)
             
-            backgroundGradient(end: vm.minuteRotationAngle, colors: [.clear, .orange])
-                .opacity(0.5)
+            backgroundGradient(end: vm.minuteRotationAngle, colors: vm.gradientColors(for: .minute))
+                //.opacity(0.5)
             
-            backgroundGradient(end: vm.secondsRotationAngle, colors: [.clear, .purple])
-                .opacity(0.35)
-            
-            Circle().fill(.ultraThinMaterial.opacity(0.7))
+            backgroundGradient(end: vm.secondsRotationAngle, colors: vm.gradientColors(for: .second))
+                //.opacity(0.35)
             
             ForEach(vm.hands, id: \.rawValue) { hand in
                 HandView(type: hand, clock: clock)

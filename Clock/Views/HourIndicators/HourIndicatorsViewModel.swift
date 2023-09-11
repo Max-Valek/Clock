@@ -40,12 +40,17 @@ extension HourIndicators {
         func rotation(for index: Int) -> Angle { indicators.rotation(for: index) }
         
         func color(for index: Int) -> Color {
-            if isCurrentSecond(index) { return clock.secondaryColor }
-            return clock.primaryColor.opacity(indicators.isHour(index) ? 1 : 0.5)
+            if isCurrentSecond(index) { return clock.secondColor }
+            if isCurrentMinute(index) { return clock.minuteColor }
+            return clock.hourColor.opacity(indicators.isHour(index) ? 0.5 : 0.25)
         }
         
         private func isCurrentSecond(_ index: Int) -> Bool {
             time.seconds == index
+        }
+        
+        private func isCurrentMinute(_ index: Int) -> Bool {
+            time.minutes == index
         }
     }
 }
