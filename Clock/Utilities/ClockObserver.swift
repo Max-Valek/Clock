@@ -12,6 +12,7 @@ import Combine
 class ClockObserver: ObservableObject {
     
     @Published var time: ClockTime
+    
     private var cancellable: AnyCancellable?
 
     init(clockManager: ClockManager) {
