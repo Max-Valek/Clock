@@ -10,10 +10,10 @@ import SwiftUI
 final class ClockHandsViewModel: ClockObserver {
     
     @Published var hands: [ClockHandType] = []
-    let clock: Clock
+    //let clock: Clock
     
     override init(clockManager: ClockManager) {
-        self.clock = clockManager.clock
+        //self.clock = clockManager.clock
         self.hands = Array(Set(clockManager.clock.hands))
         super.init(clockManager: clockManager)
     }

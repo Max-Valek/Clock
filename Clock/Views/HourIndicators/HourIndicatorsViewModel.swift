@@ -13,12 +13,12 @@ extension HourIndicators {
     final class ViewModel: ClockObserver {
 
         @Published var size: CGSize = .zero
-        let clock: Clock
+        //let clock: Clock
         let indicators: Indicators
         let indicatorCount: Int
         
         override init(clockManager: ClockManager) {
-            self.clock = clockManager.clock
+           // self.clock = clockManager.clock
             self.indicators = Indicators(mode: clockManager.clock.indicatorMode)
             self.indicatorCount = self.indicators.count
             super.init(clockManager: clockManager)

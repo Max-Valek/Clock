@@ -10,11 +10,11 @@ import SwiftUI
 final class HandViewModel: ClockObserver {
     
     @Published var size: CGSize = .zero
-    let clock: Clock
+    //let clock: Clock
     let type: ClockHandType
     
     init(type: ClockHandType, clockManager: ClockManager) {
-        self.clock = clockManager.clock
+       // self.clock = clockManager.clock
         self.type = type
         super.init(clockManager: clockManager)
     }
