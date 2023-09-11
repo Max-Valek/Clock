@@ -69,7 +69,7 @@ struct AnalogClock_Previews: PreviewProvider {
     static var previews: some View {
         AnalogClock(
             hands: [.hour, .minute, .second],
-            mode: .hoursOnly,
+            mode: .all,
             hourColor: .primary,
             minuteColor: .orange,
             secondColor: .purple) {

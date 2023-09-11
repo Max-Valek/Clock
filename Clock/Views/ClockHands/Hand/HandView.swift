@@ -19,7 +19,7 @@ struct HandView: View {
         GeometryReader { proxy in
             Capsule()
                 .fill(vm.color)
-                .frame(width: vm.thickness, height: vm.length)
+                .frame(width: vm.dynamicThickness, height: vm.length)
                 .position(vm.anchorPoint)
                 .rotationEffect(vm.rotation)
                 

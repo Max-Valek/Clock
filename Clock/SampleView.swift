@@ -10,7 +10,7 @@ import SwiftUI
 /// Sample implementation of the Clock component.
 struct SampleView: View {
     
-    private let clockSize: CGFloat = 250
+    private let clockSize: CGFloat = 300
     
     var body: some View {
         ZStack {

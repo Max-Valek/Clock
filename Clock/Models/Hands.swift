@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ClockHandConfiguration {
-    let color: Color
     let lengthScale: CGFloat
     let thickness: CGFloat
 }
@@ -18,14 +17,47 @@ enum ClockHandType: Int, CaseIterable {
     case minute
     case second
     
+    static var thicknessScale: CGFloat = 0.015
+    
+    var lengthScale: CGFloat {
+        switch self {
+        case .hour: return 0.65
+        default: return 0.85
+        }
+    }
+    
+    var largeThicknessScale: CGFloat {
+        switch self {
+        case .hour: return 6
+        case .minute: return 3
+        case .second: return 1
+        }
+    }
+    
+    var mediumThicknessScale: CGFloat {
+        switch self {
+        case .hour: return 4
+        case .minute: return 2
+        case .second: return 1
+        }
+    }
+    
+    var smallThicknessScale: CGFloat {
+        switch self {
+        case .hour: return 3
+        case .minute: return 2
+        case .second: return 1
+        }
+    }
+    
     var configuration: ClockHandConfiguration {
         switch self {
         case .hour:
-            return ClockHandConfiguration(color: .secondary, lengthScale: 0.65, thickness: 6)
+            return ClockHandConfiguration(lengthScale: 0.65, thickness: 4)
         case .minute:
-            return ClockHandConfiguration(color: .secondary, lengthScale: 0.85, thickness: 3)
+            return ClockHandConfiguration(lengthScale: 0.85, thickness: 2)
         case .second:
-            return ClockHandConfiguration(color: .purple, lengthScale: 0.85, thickness: 1)
+            return ClockHandConfiguration(lengthScale: 0.85, thickness: 1)
         }
     }
 

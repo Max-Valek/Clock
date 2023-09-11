@@ -28,6 +28,16 @@ final class HandViewModel: ClockObserver {
         case .second: return clock.secondColor
         }
     }
+    
+    var dynamicThickness: CGFloat {
+        switch radius {
+        case 0...100: return type.smallThicknessScale
+        case 101...200: return type.mediumThicknessScale
+        case 201...: return type.largeThicknessScale
+        default: return 0
+        }
+    }
+    
     var thickness: CGFloat { type.configuration.thickness }
 
     var length: CGFloat { type.configuration.lengthScale * radius }

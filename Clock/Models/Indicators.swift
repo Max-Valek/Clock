@@ -13,7 +13,7 @@ enum IndicatorMode {
 
 struct Indicators {
     let mode: IndicatorMode
-    static let hourScale: CGFloat = 0.05
+    static let hourScale: CGFloat = 0.04
     static let minuteScale: CGFloat = 0.025
     
     init(mode: IndicatorMode) {
