@@ -53,7 +53,7 @@ struct Indicators {
     static let hourScale: CGFloat = 0.05
     static let minuteScale: CGFloat = 0.025
     
-    init(mode: IndicatorMode = .all) {
+    init(mode: IndicatorMode) {
         self.mode = mode
     }
     
@@ -61,7 +61,11 @@ struct Indicators {
     
     func isHour(_ index: Int) -> Bool { mode == .none ? false : index % 5 == 0 }
     
-    func width(for index: Int) -> CGFloat { mode == .none ? 0 : (isHour(index) ? 3 : 2) }
+    func width(for index: Int) -> CGFloat {
+        guard mode != .none else { return 0 }
+        if mode == .hoursOnly && !isHour(index) { return 0 }
+        return isHour(index) ? 3 : 2
+    }
     
     func height(for index: Int) -> CGFloat { isHour(index) ? Self.hourScale : Self.minuteScale }
     

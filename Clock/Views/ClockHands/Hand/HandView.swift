@@ -22,6 +22,7 @@ struct HandView: View {
                 .frame(width: vm.thickness, height: vm.length)
                 .position(vm.anchorPoint)
                 .rotationEffect(vm.rotation)
+                
                 .onAppear { vm.size = proxy.size }
         }
     }

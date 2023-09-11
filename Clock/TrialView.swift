@@ -1,9 +1,10 @@
 import SwiftUI
 
 struct ContentView: View {
+    
     var body: some View {
-        ZStack {
-            VStack {
+//        ZStack {
+//            VStack {
                 Circle()
                     .fill(.ultraThinMaterial)
                     .background {
@@ -26,9 +27,9 @@ struct ContentView: View {
                             .rotationEffect(.degrees(-90))
                         }
                     }
-                    .blendMode(.screen)
-            }
-        }
+                    //.blendMode(.screen)
+//            }
+//        }
     }
 }
 

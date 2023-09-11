@@ -16,7 +16,7 @@ struct AnalogClock<HandAnchor: View>: View {
     let anchor: HandAnchor
     
     init(hands: [ClockHandType] = [.hour, .minute, .second],
-         mode: IndicatorMode = .all,
+         mode: IndicatorMode = .hoursOnly,
          primaryColor: Color = .primary,
          secondaryColor: Color = .red,
          anchor: @escaping () -> HandAnchor
