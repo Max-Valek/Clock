@@ -35,6 +35,15 @@ final class ClockHandsViewModel: ClockObserver {
         return .degrees(0)
     }
     
+    var secondsRotationAngle: Angle {
+        if let index = hands.firstIndex(of: .second) {
+            let angle = hands[index].rotation(for: time)
+            return angle == .degrees(0) ? .degrees(0) : angle
+        }
+        
+        return .degrees(0)
+    }
+    
     func center(of proxy: GeometryProxy) -> CGPoint {
         CGPoint(x: proxy.size.width / 2, y: proxy.size.height / 2)
     }

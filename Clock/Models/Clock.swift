@@ -96,6 +96,13 @@ enum ClockHandType: Int, CaseIterable {
         }
     }
     
+    /*
+     hour: 12 = 0
+     360/12 = 30
+     minutes = 30
+     
+     30 * (0 + 20 / 60) = 30 * (0 + 1/3) = 30 * 1 / 3 = 10
+     */
     func rotation(for time: ClockTime) -> Angle {
         switch self {
         case .hour: return Angle(degrees: (360 / 12) * (Double(time.hours) + Double(time.minutes) / 60))

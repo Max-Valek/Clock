@@ -20,7 +20,13 @@ struct ClockHands: View {
     var body: some View {
         
         ZStack {
-            backgroundGradient(start: .degrees(0), end: vm.minuteRotationAngle)
+            backgroundGradient(start: .degrees(0), end: vm.secondsRotationAngle, color: .red)
+                .opacity(0.25)
+            
+            backgroundGradient(start: .degrees(0), end: vm.minuteRotationAngle, color: .primary)
+                .opacity(0.5)
+            
+            backgroundGradient(start: .degrees(0), end: vm.hourRotationAngle - .degrees(360), color: .green)
             
             ForEach(vm.hands, id: \.rawValue) { hand in
                 HandView(type: hand, clock: clock)
@@ -28,9 +34,9 @@ struct ClockHands: View {
         }
     }
     
-    func backgroundGradient(start: Angle, end: Angle) -> some View {
+    func backgroundGradient(start: Angle, end: Angle, color: Color) -> some View {
         Circle()
-            .fill(.ultraThinMaterial)
+            .fill(.clear)
             .background {
                 GeometryReader { proxy in
                     Path { path in
@@ -45,7 +51,7 @@ struct ClockHands: View {
                     }
                     .fill(
                         AngularGradient(
-                            colors: [.red, .orange, .yellow, .green],
+                            colors: [.clear, color],
                             center: .center,
                             startAngle: start,
                             endAngle: end)
@@ -53,6 +59,7 @@ struct ClockHands: View {
                     .rotationEffect(.degrees(-90))
                 }
             }
-            .opacity(end == .degrees(0) ? 0 : 0.4)
+            //.overlay(Circle().fill(.ultraThinMaterial.opacity(0.4)))
+            .opacity(end == .degrees(0) ? 0 : 1)
     }
 }
