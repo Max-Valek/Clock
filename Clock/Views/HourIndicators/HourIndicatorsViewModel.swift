@@ -35,7 +35,7 @@ extension HourIndicators {
         
         func width(for index: Int) -> CGFloat { indicators.width(for: index) }
         
-        func height(for index: Int) -> CGFloat { indicators.height(for: index) }
+        func height(for index: Int) -> CGFloat { size.width * indicators.height(for: index) }
         
         func rotation(for index: Int) -> Angle { indicators.rotation(for: index) }
         

@@ -18,13 +18,16 @@ struct SampleView: View {
             
             clockBackground
             
-            AnalogClock(hands: [.hour, .minute, .second], mode: .hoursOnly) {
+            AnalogClock(hands: [.hour, .minute, .second], mode: .all) {
                 Circle()
                     .fill(.purple)
                     .frame(maxWidth: 8)
                     .shadow(color: .black, radius: 4)
             }
+            .padding(2)
+            .background(clockBackground)
             .frame(maxWidth: self.clockSize)
+            
         }
         .frame(maxWidth: .infinity)
     }

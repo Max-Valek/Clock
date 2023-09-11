@@ -59,7 +59,9 @@ struct AnalogClock<HandAnchor: View>: View {
                 anchor
             }
             .background(Circle().fill(.ultraThickMaterial))
+            //.clipped()
             .aspectRatio(1, contentMode: .fit)
+            .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
             .onAppear {
                 clockManager.size = geometry.size
                 clockManager.subscribe()
