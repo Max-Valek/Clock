@@ -15,7 +15,7 @@ enum IndicatorMode {
 /// Represents the dashes indicating hours/minutes around the clock.
 struct Indicators {
     let mode: IndicatorMode
-    let largeScale: CGFloat = 0.00005
+    let largeScale: CGFloat = 0.00006
     let smallScale: CGFloat = 0.000025
     
     init(mode: IndicatorMode) {

@@ -51,10 +51,11 @@ struct AnalogClock_Previews: PreviewProvider {
         AnalogClock(
             hands: [.hour, .minute, .second],
             mode: .all,
-            hourColor: .primary,
-            minuteColor: .orange,
-            secondColor: .purple
+            hourColor: .white,
+            minuteColor: .blue,
+            secondColor: .red
         )
+        .frame(width: 200)
         .preferredColorScheme(.dark)
     }
 }

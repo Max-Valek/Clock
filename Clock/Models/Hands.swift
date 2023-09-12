@@ -22,17 +22,17 @@ enum ClockHandType: Int, CaseIterable {
     /// Variable width based on size mode.
     var widths: [CGFloat] {
         switch self {
-        case .hour: return [3, 4, 8]
-        case .minute: return [2, 2, 4]
+        case .hour: return [4, 6, 9]
+        case .minute: return [2, 3, 4]
         case .second: return [1, 1, 1]
         }
     }
     
     var gradientOpacity: Double {
         switch self {
-        case .hour: return 0.2
-        case .minute: return 0.2
-        case .second: return 0.2
+        case .hour: return 0.15
+        case .minute: return 0.15
+        case .second: return 0.15
         }
     }
     
