@@ -8,14 +8,14 @@
 import SwiftUI
 import Combine
 
+/// Publisher and source of truth for clock information.
 class ClockManager: ObservableObject {
     
-    @Published var time: ClockTime
-    @Published var timerSubscription: Cancellable? = nil
+    @Published var time: ClockTime          /// Hours, minutes, seconds.
+    @Published var size: CGSize = .zero     /// Frame size of clock's view.
+    let clock: Clock                        /// Object representing the clock.
     
-    let clock: Clock
-    
-    @Published var size: CGSize = .zero
+    @Published var timerSubscription: Cancellable? = nil    /// Subscription to Timer.
     
     init(clock: Clock) {
         self.clock = clock

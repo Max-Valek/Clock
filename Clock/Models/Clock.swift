@@ -7,11 +7,12 @@
 
 import SwiftUI
 
+/// Data model representing a customizable clock.
 struct Clock {
-    let time: ClockTime
-    let hands: [ClockHandType]
-    let indicatorMode: IndicatorMode
-    let colors: ClockColors
+    let time: ClockTime                     /// Hours, minutes, seconds
+    let hands: [ClockHandType]              /// Desired hands to include
+    let indicatorMode: IndicatorMode        /// Desired indicators to show
+    let colors: ClockColors                 /// Desired clock colors
     
     init(hands: [ClockHandType],
          indicatorMode: IndicatorMode,
@@ -22,9 +23,17 @@ struct Clock {
         self.indicatorMode = indicatorMode
         self.colors = colors
     }
+    
+    func handColor(for hand: ClockHandType) -> Color {
+        switch hand {
+        case .hour: return colors.hours
+        case .minute: return colors.minutes
+        case .second: return colors.seconds
+        }
+    }
 }
 
-/// Represents the current time for the clock.
+/// Time for the clock. (hours, minutes, seconds).
 struct ClockTime {
     let hours: Int
     let minutes: Int
@@ -38,6 +47,7 @@ struct ClockTime {
     }
 }
 
+/// Colors for the clock.
 struct ClockColors {
     let hours: Color
     let minutes: Color

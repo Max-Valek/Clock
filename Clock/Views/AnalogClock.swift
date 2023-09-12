@@ -8,25 +8,20 @@
 import SwiftUI
 import Combine
 
-/// View for a basic clock with hours, minutes, and seconds hands along with a marker for each hour.
+/// Root view for the Clock.
 struct AnalogClock: View {
     
     @StateObject private var clockManager: ClockManager
     
     init(hands: [ClockHandType] = [.hour, .minute, .second],
-         mode: IndicatorMode = .hoursOnly,
-         hourColor: Color = .primary,
-         minuteColor: Color = .orange,
-         secondColor: Color = .purple
+         mode: IndicatorMode = .hoursOnly, hourColor: Color = .primary,
+         minuteColor: Color = .orange, secondColor: Color = .purple
     ) {
-        let clock = Clock(
-            hands: hands,
-            indicatorMode: mode,
-            colors: ClockColors(
-                hours: hourColor,
-                minutes: minuteColor,
-                seconds: secondColor
-            )
+        let clock = Clock(hands: hands,
+                          indicatorMode: mode,
+                          colors: ClockColors(hours: hourColor,
+                                              minutes: minuteColor,
+                                              seconds: secondColor)
         )
         _clockManager = StateObject(wrappedValue: ClockManager(clock: clock))
     }
@@ -35,12 +30,13 @@ struct AnalogClock: View {
         GeometryReader { geometry in
             ZStack {
                 HourIndicators(clock: clockManager)
-                
                 ClockHands(clock: clockManager)
             }
             .background(Circle().fill(.ultraThickMaterial))
             .aspectRatio(1, contentMode: .fit)
-            .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
+            .frame(width: geometry.size.width,
+                   height: geometry.size.height,
+                   alignment: .center)
             .onAppear {
                 clockManager.size = geometry.size
                 clockManager.subscribe()

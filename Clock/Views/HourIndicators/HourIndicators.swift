@@ -17,7 +17,6 @@ struct HourIndicators: View {
     }
     
     var body: some View {
-        
         ForEach(0..<60) { second in
             Path { path in
                 path.move(to: vm.topCenter)

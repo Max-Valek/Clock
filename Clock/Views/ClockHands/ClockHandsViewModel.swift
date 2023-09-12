@@ -7,60 +7,28 @@
 
 import SwiftUI
 
-final class ClockHandsViewModel: ClockObserver {
+extension ClockHands {
+    
+    /// View model class for hands on the clock.
+    final class ViewModel: ClockObserver {
 
-    @Published var hands: [ClockHandType] = []
+        @Published var hands: [ClockHandType] = []      /// Desired hands to show.
 
-    override init(clockManager: ClockManager) {
-        self.hands = Array(Set(clockManager.clock.hands))
-        super.init(clockManager: clockManager)
-    }
-
-    var startAngle: Angle { .degrees(0) }
-
-    var hourRotationAngle: Angle {
-        if let index = hands.firstIndex(of: .hour) {
-            let angle = hands[index].rotation(for: time)
-            return time.hours > 0 ? angle : angle - .degrees(360)
+        override init(clockManager: ClockManager) {
+            self.hands = Array(Set(clockManager.clock.hands))
+            super.init(clockManager: clockManager)
         }
 
-        return .degrees(0)
-    }
-
-
-    var minuteRotationAngle: Angle {
-        if let index = hands.firstIndex(of: .minute) {
-            let angle = hands[index].rotation(for: time)
-            return angle == .degrees(0) ? .degrees(0) : angle
-        }
-
-        return .degrees(0)
-    }
-
-    var secondsRotationAngle: Angle {
-        if let index = hands.firstIndex(of: .second) {
-            let angle = hands[index].rotation(for: time)
-            return angle == .degrees(0) ? .degrees(0) : angle
-        }
-
-        return .degrees(0)
-    }
-
-    var anchorColor: Color { clock.colors.seconds }
-
-    var anchorWidth: CGFloat {
-        switch sizeMode {
-        case .small: return ClockHandType.hour.widths[0] * 2
-        case .medium: return ClockHandType.hour.widths[1] * 2
-        case .large: return ClockHandType.hour.widths[2] * 2
-        }
-    }
-
-    func gradientColors(for hand: ClockHandType) -> [Color] {
-        switch hand {
-        case .hour: return [.clear, clock.colors.hours.opacity(0.25)]
-        case .minute: return [.clear, clock.colors.minutes.opacity(0.25)]
-        case .second: return [.clear, clock.colors.seconds.opacity(0.25)]
+        /// Color for hands' anchor (center point).
+        var anchorColor: Color { clock.colors.hours }
+        
+        /// Width for hands' anchor (center point).
+        var anchorWidth: CGFloat { ClockHandType.hour.width(forSize: sizeMode) * 2 }
+        
+        /// Calculate a hand's rotation angle for ending the progress gradient.
+        func rotation(hand: ClockHandType) -> Angle {
+            guard hands.contains(hand) else { return .degrees(0) }
+            return hand.rotation(for: time)
         }
     }
 }
