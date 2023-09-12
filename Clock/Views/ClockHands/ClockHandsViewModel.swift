@@ -50,9 +50,9 @@ final class ClockHandsViewModel: ClockObserver {
 
     var anchorWidth: CGFloat {
         switch sizeMode {
-        case .small: return ClockHandType.hour.smallWidth * 2
-        case .medium: return ClockHandType.hour.mediumWidth * 2
-        case .large: return ClockHandType.hour.largeWidth * 2
+        case .small: return ClockHandType.hour.widths[0] * 2
+        case .medium: return ClockHandType.hour.widths[1] * 2
+        case .large: return ClockHandType.hour.widths[2] * 2
         }
     }
 

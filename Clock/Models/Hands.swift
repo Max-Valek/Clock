@@ -20,30 +20,14 @@ enum ClockHandType: Int, CaseIterable {
         }
     }
     
-    var largeWidth: CGFloat {
+    var widths: [CGFloat] {
         switch self {
-        case .hour: return 8
-        case .minute: return 4
-        case .second: return 1
+        case .hour: return [3, 4, 8]
+        case .minute: return [2, 2, 4]
+        case .second: return [1, 1, 1]
         }
     }
     
-    var mediumWidth: CGFloat {
-        switch self {
-        case .hour: return 4
-        case .minute: return 2
-        case .second: return 1
-        }
-    }
-    
-    var smallWidth: CGFloat {
-        switch self {
-        case .hour: return 3
-        case .minute: return 2
-        case .second: return 1
-        }
-    }
-
     func rotation(for time: ClockTime) -> Angle {
         switch self {
         case .hour: return Angle(degrees: (360 / 12) * (Double(time.hours) + Double(time.minutes) / 60))
