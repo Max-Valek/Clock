@@ -11,14 +11,14 @@ import Combine
 /// Root view for the Clock.
 struct AnalogClock: View {
     
+    /// Manages the state of the clock and its components.
     @StateObject private var clockManager: ClockManager
-    
-    init(hands: [ClockHandType] = [.hour, .minute, .second],
+
+    init(hands: [HandType] = [.hour, .minute, .second],
          mode: IndicatorMode = .hoursOnly, hourColor: Color = .primary,
          minuteColor: Color = .orange, secondColor: Color = .purple
     ) {
-        let clock = Clock(hands: hands,
-                          indicatorMode: mode,
+        let clock = Clock(hands: hands, indicatorMode: mode,
                           colors: ClockColors(hours: hourColor,
                                               minutes: minuteColor,
                                               seconds: secondColor)
@@ -55,7 +55,7 @@ struct AnalogClock_Previews: PreviewProvider {
             minuteColor: .blue,
             secondColor: .red
         )
-        .frame(width: 200)
+        .frame(width: 100)
         .preferredColorScheme(.dark)
     }
 }

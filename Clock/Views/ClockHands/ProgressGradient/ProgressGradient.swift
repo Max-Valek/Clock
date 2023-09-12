@@ -11,7 +11,7 @@ struct ProgressGradient: View {
     
     @StateObject private var vm: ViewModel
 
-    init(type: ClockHandType, clock: ClockManager) {
+    init(type: HandType, clock: ClockManager) {
         _vm = StateObject(wrappedValue: ViewModel(type: type, clockManager: clock))
     }
     

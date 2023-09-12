@@ -45,7 +45,6 @@ extension HourIndicators {
             if isCurrentMinute(index) { return clock.colors.minutes }
             if hourIsPast(index) { return clock.colors.hours.opacity(0.5) }
             return clock.colors.hours.opacity(0.3)
-            //return clock.colors.hours.opacity(indicators.isHour(index) ? 0.5 : 0.25)
         }
         
         /// True if the current time's seconds is equal to the index.
@@ -54,9 +53,9 @@ extension HourIndicators {
         /// True if the current time's minutes is equal to the index.
         private func isCurrentMinute(_ index: Int) -> Bool { time.minutes == index }
         
+        /// True if the hour hand has rotated past the indicator.
         private func hourIsPast(_ index: Int) -> Bool {
-            //time.hours * 5 >= index
-            ClockHandType.hour.rotation(for: time) >= rotation(for: index)
+            HandType.hour.rotation(for: time) >= rotation(for: index)
         }
     }
 }

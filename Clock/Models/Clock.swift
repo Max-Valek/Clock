@@ -10,11 +10,11 @@ import SwiftUI
 /// Data model representing a customizable clock.
 struct Clock {
     let time: ClockTime                     /// Hours, minutes, seconds
-    let hands: [ClockHandType]              /// Desired hands to include
+    let hands: [HandType]                   /// Desired hands to include
     let indicatorMode: IndicatorMode        /// Desired indicators to show
     let colors: ClockColors                 /// Desired clock colors
     
-    init(hands: [ClockHandType],
+    init(hands: [HandType],
          indicatorMode: IndicatorMode,
          colors: ClockColors
     ) {
@@ -24,7 +24,7 @@ struct Clock {
         self.colors = colors
     }
     
-    func handColor(for hand: ClockHandType) -> Color {
+    func handColor(for hand: HandType) -> Color {
         switch hand {
         case .hour: return colors.hours
         case .minute: return colors.minutes

@@ -12,9 +12,9 @@ extension ProgressGradient {
     /// View model class for an individual hand on the clock.
     final class ViewModel: ClockObserver {
 
-        let type: ClockHandType         /// hour, minute, or second hand
+        let type: HandType         /// hour, minute, or second hand
 
-        init(type: ClockHandType, clockManager: ClockManager) {
+        init(type: HandType, clockManager: ClockManager) {
             self.type = type
             super.init(clockManager: clockManager)
         }

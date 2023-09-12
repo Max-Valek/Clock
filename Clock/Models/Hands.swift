@@ -8,7 +8,7 @@
 import SwiftUI
 
 /// Represents the three hands on the clock.
-enum ClockHandType: Int, CaseIterable {
+enum HandType: Int, CaseIterable {
     case hour, minute, second
     
     /// Percentage of the clock radius the hand spans.
@@ -22,12 +22,13 @@ enum ClockHandType: Int, CaseIterable {
     /// Variable width based on size mode.
     var widths: [CGFloat] {
         switch self {
-        case .hour: return [4, 6, 9]
+        case .hour: return [3, 6, 9]
         case .minute: return [2, 3, 4]
         case .second: return [1, 1, 1]
         }
     }
     
+    /// Opacity for the progress gradient.
     var gradientOpacity: Double {
         switch self {
         case .hour: return 0.15
