@@ -18,9 +18,9 @@ final class HandViewModel: ClockObserver {
 
     var color: Color {
         switch type {
-        case .hour: return clock.hourColor
-        case .minute: return clock.minuteColor
-        case .second: return clock.secondColor
+        case .hour: return clock.colors.hours
+        case .minute: return clock.colors.minutes
+        case .second: return clock.colors.seconds
         }
     }
     var thickness: CGFloat {

@@ -35,7 +35,7 @@ struct ClockHands: View {
             }
 
             Circle()
-                .fill(vm.clock.hourColor)
+                .fill(vm.clock.colors.hours)
                 .frame(width: ClockHandType.hour.largeWidth * 2)
         }
     }

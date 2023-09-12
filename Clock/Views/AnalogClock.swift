@@ -22,9 +22,11 @@ struct AnalogClock: View {
         let clock = Clock(
             hands: hands,
             indicatorMode: mode,
-            hourColor: hourColor,
-            minuteColor: minuteColor,
-            secondColor: secondColor
+            colors: ClockColors(
+                hours: hourColor,
+                minutes: minuteColor,
+                seconds: secondColor
+            )
         )
         _clockManager = StateObject(wrappedValue: ClockManager(clock: clock))
     }

@@ -11,29 +11,49 @@ enum ClockSize {
     case small, medium, large
 }
 
+struct ClockColors {
+    let hours: Color
+    let minutes: Color
+    let seconds: Color
+}
+
 struct Clock {
     let time: ClockTime
     let hands: [ClockHandType]
     let indicatorMode: IndicatorMode
-    
-    let hourColor: Color
-    let minuteColor: Color
-    let secondColor: Color
+    let colors: ClockColors
     
     init(hands: [ClockHandType],
          indicatorMode: IndicatorMode,
-         hourColor: Color,
-         minuteColor: Color,
-         secondColor: Color
+         colors: ClockColors
     ) {
         self.time = ClockTime(date: Date())
         self.hands = hands
         self.indicatorMode = indicatorMode
-        self.hourColor = hourColor
-        self.minuteColor = minuteColor
-        self.secondColor = secondColor
+        self.colors = colors
     }
 }
+
+//struct Clock {
+//    let time: ClockTime
+//    let hands: [ClockHandType]
+//    let indicatorMode: IndicatorMode
+//    let colors: ClockColors
+//
+//    init(hands: [ClockHandType],
+//         indicatorMode: IndicatorMode,
+//         hourColor: Color,
+//         minuteColor: Color,
+//         secondColor: Color
+//    ) {
+//        self.time = ClockTime(date: Date())
+//        self.hands = hands
+//        self.indicatorMode = indicatorMode
+//        self.colors = ClockColors(hours: hourColor,
+//                                  minutes: minuteColor,
+//                                  seconds: secondColor)
+//    }
+//}
 
 /// Represents the current time for the clock.
 struct ClockTime {
