@@ -7,16 +7,6 @@
 
 import SwiftUI
 
-enum ClockSize {
-    case small, medium, large
-}
-
-struct ClockColors {
-    let hours: Color
-    let minutes: Color
-    let seconds: Color
-}
-
 struct Clock {
     let time: ClockTime
     let hands: [ClockHandType]
@@ -34,27 +24,6 @@ struct Clock {
     }
 }
 
-//struct Clock {
-//    let time: ClockTime
-//    let hands: [ClockHandType]
-//    let indicatorMode: IndicatorMode
-//    let colors: ClockColors
-//
-//    init(hands: [ClockHandType],
-//         indicatorMode: IndicatorMode,
-//         hourColor: Color,
-//         minuteColor: Color,
-//         secondColor: Color
-//    ) {
-//        self.time = ClockTime(date: Date())
-//        self.hands = hands
-//        self.indicatorMode = indicatorMode
-//        self.colors = ClockColors(hours: hourColor,
-//                                  minutes: minuteColor,
-//                                  seconds: secondColor)
-//    }
-//}
-
 /// Represents the current time for the clock.
 struct ClockTime {
     let hours: Int
@@ -69,4 +38,8 @@ struct ClockTime {
     }
 }
 
-
+struct ClockColors {
+    let hours: Color
+    let minutes: Color
+    let seconds: Color
+}

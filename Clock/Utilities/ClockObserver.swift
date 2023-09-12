@@ -26,7 +26,11 @@ class ClockObserver: ObservableObject {
         addSubscribers()
     }
     
-    /// Keep track of the frame size.
+    enum ClockSize {
+        case small, medium, large
+    }
+    
+    /// Keep track of the frame.
     var center: CGPoint { CGPoint(x: radius, y: radius) }
     var radius: CGFloat { min(size.width, size.height) / 2 }
     var sizeMode: ClockSize {

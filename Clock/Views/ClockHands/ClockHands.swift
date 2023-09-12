@@ -21,13 +21,13 @@ struct ClockHands: View {
 
         ZStack {
 
-            backgroundGradient(end: vm.hourRotationAngle, colors: vm.gradientColors(for: .hour))
+            handProgressGradient(end: vm.hourRotationAngle, colors: vm.gradientColors(for: .hour))
                 //.opacity(0.7)
 
-            backgroundGradient(end: vm.minuteRotationAngle, colors: vm.gradientColors(for: .minute))
+            handProgressGradient(end: vm.minuteRotationAngle, colors: vm.gradientColors(for: .minute))
                 //.opacity(0.5)
 
-            backgroundGradient(end: vm.secondsRotationAngle, colors: vm.gradientColors(for: .second))
+            handProgressGradient(end: vm.secondsRotationAngle, colors: vm.gradientColors(for: .second))
                 //.opacity(0.35)
 
             ForEach(vm.hands, id: \.rawValue) { hand in
@@ -36,11 +36,11 @@ struct ClockHands: View {
 
             Circle()
                 .fill(vm.clock.colors.hours)
-                .frame(width: ClockHandType.hour.largeWidth * 2)
+                .frame(width: vm.anchorWidth)
         }
     }
 
-    func backgroundGradient(end: Angle, colors: [Color]) -> some View {
+    func handProgressGradient(end: Angle, colors: [Color]) -> some View {
         Circle()
             .fill(.clear)
             .background {

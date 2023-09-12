@@ -48,7 +48,13 @@ final class ClockHandsViewModel: ClockObserver {
 
     var anchorColor: Color { clock.colors.seconds }
 
-    var anchorWidth: CGFloat { 0 }
+    var anchorWidth: CGFloat {
+        switch sizeMode {
+        case .small: return ClockHandType.hour.smallWidth * 2
+        case .medium: return ClockHandType.hour.mediumWidth * 2
+        case .large: return ClockHandType.hour.largeWidth * 2
+        }
+    }
 
     func gradientColors(for hand: ClockHandType) -> [Color] {
         switch hand {

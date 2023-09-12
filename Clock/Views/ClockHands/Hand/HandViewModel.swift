@@ -23,6 +23,7 @@ final class HandViewModel: ClockObserver {
         case .second: return clock.colors.seconds
         }
     }
+    
     var thickness: CGFloat {
         switch sizeMode {
         case .small: return type.smallWidth
